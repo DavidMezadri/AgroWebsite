@@ -1,9 +1,21 @@
-export function App() {
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Login, Register } from "./components";
+
+export const App = () => {
 	return (
-		<div>
-			<h1>Hello Wolrds</h1>
-		</div>
+		<Router>
+			<Routes>
+				<Route
+					path="/login"
+					element={<Login />}
+				/>
+				<Route
+					path="/register"
+					element={<Register />}
+				/>
+			</Routes>
+		</Router>
 	);
-}
+};
 
 export default App;
