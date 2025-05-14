@@ -6,23 +6,23 @@ export const Register = () => {
 	return (
 		<div className="flex flex-col justify-center sm:h-screen p-4">
 			<div className="max-w-md w-full mx-auto border border-slate-300 rounded-2xl p-8">
-				<div className="text-center mb-12">
-					<a href="javascript:void(0)">
-						<img
-							src="https://readymadeui.com/readymadeui.svg"
-							alt="logo"
-							className="w-40 inline-block"
-						/>
+				<div className="text-center mb-5">
+					<a href="login">
+						<img src="download.svg" alt="logo" className="w-20 inline-block" />
 					</a>
 				</div>
 
 				<form>
 					<div className="space-y-6">
 						<div>
-							<label className="text-slate-800 text-sm font-medium mb-2 block">
-								Email Id
+							<label
+								htmlFor="email"
+								className="text-slate-800 text-sm font-medium mb-2 block"
+							>
+								Email
 							</label>
 							<input
+								id="email"
 								name="email"
 								type="text"
 								className="text-slate-800 bg-white border border-slate-300 w-full text-sm px-4 py-3 rounded-md outline-green-500"
@@ -30,10 +30,14 @@ export const Register = () => {
 							/>
 						</div>
 						<div>
-							<label className="text-slate-800 text-sm font-medium mb-2 block">
-								Password
+							<label
+								htmlFor="password"
+								className="text-slate-800 text-sm font-medium mb-2 block"
+							>
+								Senha
 							</label>
 							<input
+								id="password"
 								name="password"
 								type="password"
 								className="text-slate-800 bg-white border border-slate-300 w-full text-sm px-4 py-3 rounded-md outline-green-500"
@@ -41,10 +45,14 @@ export const Register = () => {
 							/>
 						</div>
 						<div>
-							<label className="text-slate-800 text-sm font-medium mb-2 block">
-								Confirm Password
+							<label
+								htmlFor="cpassword"
+								className="text-slate-800 text-sm font-medium mb-2 block"
+							>
+								Confirmação da Senha
 							</label>
 							<input
+								id="cpassword"
 								name="cpassword"
 								type="password"
 								className="text-slate-800 bg-white border border-slate-300 w-full text-sm px-4 py-3 rounded-md outline-green-500"
@@ -63,12 +71,12 @@ export const Register = () => {
 								htmlFor="remember-me"
 								className="text-slate-800 ml-3 block text-sm"
 							>
-								I accept the{" "}
+								Eu aceito os{" "}
 								<a
-									href="javascript:void(0);"
+									href="/termoscontrato"
 									className="text-green-600 font-medium hover:underline ml-1"
 								>
-									Terms and Conditions
+									Termos e Condições
 								</a>
 							</label>
 						</div>
@@ -83,16 +91,16 @@ export const Register = () => {
 						</button>
 					</div>
 					<p className="text-slate-800 text-sm mt-6 text-center">
-						Already have an account?{" "}
+						Já possui cadastro?{" "}
 						<a
-							href="javascript:void(0);"
+							href="/login"
 							className="text-green-600 font-medium hover:underline ml-1"
 							onClick={(e) => {
 								e.preventDefault();
 								navigate("/login");
 							}}
 						>
-							Login here
+							Volte ao Login
 						</a>
 					</p>
 				</form>

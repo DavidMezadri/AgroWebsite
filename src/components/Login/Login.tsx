@@ -41,21 +41,24 @@ export const Login = () => {
 				<div className="min-h-screen flex flex-col items-center justify-center py-6 px-4">
 					<div className="max-w-md w-full">
 						<a href="javascript:void(0)">
-							<img
-								src="https://readymadeui.com/readymadeui.svg"
+							{<img
+								src="./download.svg"
+								
 								alt="logo"
-								className="w-40 mb-8 mx-auto block"
+								className="w-20 mb-8 mx-auto block"
 							/>
+							
+							}
 						</a>
 
 						<div className="p-8 rounded-2xl bg-white shadow">
 							<h2 className="text-slate-900 text-center text-3xl font-semibold">
-								Sign in
+								Página de Login
 							</h2>
 							<form className="mt-12 space-y-6">
 								<div>
 									<label className="text-slate-800 text-sm font-medium mb-2 block">
-										User name
+										Usuário
 									</label>
 									<div className="relative flex items-center">
 										<input
@@ -63,7 +66,7 @@ export const Login = () => {
 											type="text"
 											required
 											className="w-full text-slate-800 text-sm border border-slate-300 px-4 py-3 rounded-md outline-green-600"
-											placeholder="Enter user name"
+											placeholder="Digite o Usuário"
 										/>
 										<svg
 											xmlns="http://www.w3.org/2000/svg"
@@ -88,7 +91,7 @@ export const Login = () => {
 
 								<div>
 									<label className="text-slate-800 text-sm font-medium mb-2 block">
-										Password
+										Senha
 									</label>
 									<div className="relative flex items-center">
 										<input
@@ -100,7 +103,7 @@ export const Login = () => {
 											}
 											required
 											className="w-full text-slate-800 text-sm border border-slate-300 px-4 py-3 rounded-md outline-green-600"
-											placeholder="Enter password"
+											placeholder="Digite a Senha"
 										/>
 										{/* {showPassword ? (
 											<EyeIcon
@@ -135,7 +138,7 @@ export const Login = () => {
 											htmlFor="remember-me"
 											className="ml-3 block text-sm text-slate-800"
 										>
-											Remember me
+											Lembrar Usuário
 										</label>
 									</div>
 									<div className="text-sm">
@@ -143,7 +146,7 @@ export const Login = () => {
 											href="jajvascript:void(0);"
 											className="text-green-600 hover:underline font-semibold"
 										>
-											Forgot your password?
+											Esqueceu sua senha?
 										</a>
 									</div>
 								</div>
@@ -153,11 +156,11 @@ export const Login = () => {
 										type="button"
 										className="w-full py-2 px-4 text-[15px] font-medium tracking-wide rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none cursor-pointer"
 									>
-										Sign in
+										Logar
 									</button>
 								</div>
 								<p className="text-slate-800 text-sm !mt-6 text-center">
-									Don't have an account?{" "}
+									Não possui uma conta?{" "}
 									<a
 										href=""
 										className="text-green-600 hover:underline ml-1 whitespace-nowrap font-semibold"
@@ -166,7 +169,7 @@ export const Login = () => {
 											navigate("/register");
 										}}
 									>
-										Register here
+										Registrar
 									</a>
 								</p>
 							</form>
