@@ -26,7 +26,7 @@ export const Register = () => {
 								name="email"
 								type="text"
 								className="text-slate-800 bg-white border border-slate-300 w-full text-sm px-4 py-3 rounded-md outline-green-500"
-								placeholder="Enter email"
+								placeholder="Digite o email"
 							/>
 						</div>
 						<div>
@@ -41,7 +41,7 @@ export const Register = () => {
 								name="password"
 								type="password"
 								className="text-slate-800 bg-white border border-slate-300 w-full text-sm px-4 py-3 rounded-md outline-green-500"
-								placeholder="Enter password"
+								placeholder="Digite a senha"
 							/>
 						</div>
 						<div>
@@ -56,7 +56,7 @@ export const Register = () => {
 								name="cpassword"
 								type="password"
 								className="text-slate-800 bg-white border border-slate-300 w-full text-sm px-4 py-3 rounded-md outline-green-500"
-								placeholder="Enter confirm password"
+								placeholder="Digite a confirmação da senha"
 							/>
 						</div>
 
@@ -87,7 +87,7 @@ export const Register = () => {
 							type="button"
 							className="w-full py-3 px-4 text-sm tracking-wider font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none cursor-pointer"
 						>
-							Create an account
+							Criar uma conta
 						</button>
 					</div>
 					<p className="text-slate-800 text-sm mt-6 text-center">

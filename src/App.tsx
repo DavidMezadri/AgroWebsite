@@ -1,5 +1,5 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Login, Register } from "./components";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import { Analysis, Login, Register } from "./components";
 
 export const App = () => {
 	return (
@@ -7,6 +7,7 @@ export const App = () => {
 			<Routes>
 				<Route path="/login" element={<Login />} />
 				<Route path="/register" element={<Register />} />
+				<Route path="/analysis" element={<Analysis />} />
 			</Routes>
 		</Router>
 	);
