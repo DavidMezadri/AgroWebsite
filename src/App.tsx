@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Login, Register } from "./components";
+import { Login, Register } from "./pages";
 
 export const App = () => {
 	return (
