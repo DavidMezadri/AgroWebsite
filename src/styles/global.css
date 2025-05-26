@@ -1,1 +1,35 @@
 @import "./tailwind.css";
+
+@theme {
+    --color-background: #202123;
+
+    /* Superfícies (cards, inputs) */
+    --color-surface: #2a2b32;
+    --color-surface-variant: #343541;
+
+    /* Bordas, linhas */
+    --color-border: #3e3f4b;
+
+    /* Texto */
+    --color-text: #e3e3e3;
+    --color-text-muted: #a1a1aa;
+
+    /* Verde de destaque (ex: botões, links, ícones) */
+    --color-accent: #10b981;
+    /* Tailwind emerald-500 */
+    --color-accent-hover: #059669;
+
+    /* Verde adicional para ícones, gráficos, etc */
+    --color-success: #22c55e;
+    --color-success-dark: #15803d;
+
+    --font-family-display: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    /* Fonte para labels e textos menores - mais neutra e clean */
+    --font-family-label: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+    --font-weight-bold: 700;
+    --font-weight-medium: 500;
+    --font-weight-regular: 400;
+
+}
