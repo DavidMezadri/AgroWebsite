@@ -1,0 +1,33 @@
+import type React from "react";
+
+type InputElementsProps = {
+	placeholder: string;
+	type?: string;
+	infos: string[{}];
+	index: number;
+	width?: string;
+	function: (index: number, field: string, valor: string) => void;
+};
+
+export const InputElements: React.FC<InputElementsProps> = ({
+	placeholder,
+	type = "number",
+	infos,
+	index,
+	width = 20,
+	function: handleClickUpdate,
+}) => {
+	const field = placeholder.trim();
+	return (
+		<div>
+			<input
+				className={`flex-1 text-sm border border-text placeholder:text-xs placeholder-text text-text px-3 py-2 rounded-md outline-green-600 min-w-${width} max-w-${width}`}
+				placeholder={placeholder}
+				required
+				type={type}
+				onChange={(e) => handleClickUpdate(index, field, e.target.value)}
+				value={infos[index][field]}
+			/>
+		</div>
+	);
+};
