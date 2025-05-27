@@ -22,26 +22,30 @@ export const Sidebar = () => {
 				/>
 				<div className="absolute  right-0 top-30">
 					<div className="flex flex-col gap-y-[15vh] w-30">
-						<div
-							className={`border-1 text-center border-accent bg-accent hover:bg-accent-hover hover:drop-shadow-[0_0_2px_white] rounded-full p-2 cursor-pointer text-lg text-text ${onClickOpen ? "w-30" : "w-9"} duration-300`}
+						<button
+							type="button"
+							className={`text-center border-accent bg-accent hover:bg-accent-hover hover:drop-shadow-[0_0_2px_white] rounded-full p-2 cursor-pointer text-lg text-text ${onClickOpen ? "w-30" : "w-9"} duration-300`}
 						>
 							Fazendas
-						</div>
-						<div
-							className={`border-1 text-center border-accent bg-accent hover:bg-accent-hover hover:drop-shadow-[0_0_2px_white] rounded-full p-2 cursor-pointer text-lg text-text ${onClickOpen ? "w-30" : "w-9"} duration-300`}
+						</button>
+						<button
+							type="button"
+							className={`text-center border-accent bg-accent hover:bg-accent-hover hover:drop-shadow-[0_0_2px_white] rounded-full p-2 cursor-pointer text-lg text-text ${onClickOpen ? "w-30" : "w-9"} duration-300`}
 						>
 							Análises
-						</div>
-						<div
-							className={`border-1 text-center border-accent bg-accent hover:bg-accent-hover hover:drop-shadow-[0_0_2px_white] rounded-full p-2 cursor-pointer text-lg text-text ${onClickOpen ? "w-30" : "w-9"} duration-300`}
+						</button>
+						<button
+							type="button"
+							className={`text-center border-accent bg-accent hover:bg-accent-hover hover:drop-shadow-[0_0_2px_white] rounded-full p-2 cursor-pointer text-lg text-text ${onClickOpen ? "w-30" : "w-9"} duration-300`}
 						>
 							Outros
-						</div>
-						<div
-							className={`border-1 text-center border-accent bg-accent hover:bg-accent-hover hover:drop-shadow-[0_0_2px_white] rounded-full p-2 cursor-pointer text-lg text-text ${onClickOpen ? "w-30" : "w-9"} duration-300`}
+						</button>
+						<button
+							type="button"
+							className={`text-center border-accent bg-accent hover:bg-accent-hover hover:drop-shadow-[0_0_2px_white] rounded-full p-2 cursor-pointer text-lg text-text ${onClickOpen ? "w-30" : "w-9"} duration-300`}
 						>
 							Sobre
-						</div>
+						</button>
 					</div>
 				</div>
 			</div>
@@ -61,6 +65,7 @@ export const Sidebar = () => {
 				<div className="absolute right-[50vw] top-20 translate-x-1/2">
 					<div className="flex flex-col gap-y-[10vh] w-80">
 						<button
+							type="button"
 							className={
 								"h-[10vh] flex items-center text-3xl justify-center bg-accent hover:bg-accent-hover hover:drop-shadow-[0_0_2px_white] rounded-full p-2 text-text duration-300"
 							}
@@ -68,6 +73,7 @@ export const Sidebar = () => {
 							Fazendas
 						</button>
 						<button
+							type="button"
 							className={
 								"h-[10vh] flex items-center text-3xl justify-center bg-accent hover:bg-accent-hover hover:drop-shadow-[0_0_2px_white] rounded-full p-2 text-text duration-300"
 							}
@@ -75,6 +81,7 @@ export const Sidebar = () => {
 							Análises
 						</button>
 						<button
+							type="button"
 							className={
 								"h-[10vh] flex items-center text-3xl justify-center bg-accent hover:bg-accent-hover hover:drop-shadow-[0_0_2px_white] rounded-full p-2 text-text duration-300"
 							}
@@ -82,6 +89,7 @@ export const Sidebar = () => {
 							Outros
 						</button>
 						<button
+							type="button"
 							className={
 								"h-[10vh] flex items-center text-3xl justify-center bg-accent hover:bg-accent-hover hover:drop-shadow-[0_0_2px_white] rounded-full p-2 text-text duration-300"
 							}

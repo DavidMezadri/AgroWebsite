@@ -1,10 +1,9 @@
 import "./style.module.css";
 import { useState } from "react";
+import { ButtonPattern } from "../../components/ButtonPattern/ButtonPattrern";
 import { InputElements } from "../../components/InputElements/InputElements";
 import { Sidebar } from "../../components/Sidebar/Sidebar";
 
-const inputClassNormal =
-	"flex-1 text-text text-sm border placeholder-text border-text rounded-md outline-green-600 min-w-20 max-w-20";
 const labelClassNormal = "text-center font-semibold min-w-20 max-w-20";
 
 const farm = "fazenda bocaial";
@@ -35,28 +34,10 @@ type FormLabel = (typeof labels)[number];
 type FormTemplate = { [key in FormLabel]: string };
 
 export const Analysis = () => {
-	const formTemplate: FormTemplate = {
-		info1: "",
-		info2: "",
-		info3: "",
-		info4: "",
-		info5: "",
-		info6: "",
-		info7: "",
-		info8: "",
-		info9: "",
-		info10: "",
-		info11: "",
-		info12: "",
-		info13: "",
-		info14: "",
-		info15: "",
-		info16: "",
-		info17: "",
-		info18: "",
-		info19: "",
-		info20: "",
-	};
+	const formTemplate: FormTemplate = labels.reduce((acc, label) => {
+		acc[label] = "";
+		return acc;
+	}, {} as FormTemplate);
 
 	const [infos, setInfos] = useState([formTemplate]);
 
@@ -355,13 +336,11 @@ export const Analysis = () => {
 					</div>
 				</div>
 
-				<button
-					type="submit"
-					className="mt-2 bottom-1/10 left-1/2 w-1/10 min-w-25 py-3 text-sm tracking-wider font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none cursor-pointer"
-					onClick={() => console.log(infos)}
-				>
-					Salvar
-				</button>
+				<ButtonPattern
+					type={"button"}
+					value={"Salvar"}
+					functionOnClick={() => console.log(infos)}
+				/>
 			</div>
 		</div>
 	);
