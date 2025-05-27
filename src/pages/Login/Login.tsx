@@ -3,6 +3,7 @@ import "../../styles/theme.css";
 import { EyeIcon, EyeOffIcon } from "lucide-react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { ThemeButton } from "../../components";
 
 type IconType = "hidden" | "show";
 
@@ -37,9 +38,8 @@ export const Login = () => {
 
 	return (
 		<>
-			{/* Toggle Button */}
-			<div className="bg-gray-50">
-				<div className="min-h-screen flex flex-col items-center justify-center py-6 px-4">
+			<div className="bg-[var(--gray-200)]">
+				<div className="min-h-screen flex flex-col items-center justify-center py-6 px-4 bg-[var(--gray-200)]">
 					<div className="max-w-md w-full">
 						<a href="www">
 							{
@@ -76,7 +76,6 @@ export const Login = () => {
 											placeholder="Digite o Usuário"
 										/>
 
-										{/* biome-ignore lint/a11y/noSvgWithoutTitle: <explanation> */}
 										<svg
 											xmlns="http://www.w3.org/2000/svg"
 											fill="#bbb"
@@ -84,6 +83,13 @@ export const Login = () => {
 											className="w-4 h-4 absolute right-4"
 											viewBox="0 0 24 24"
 										>
+											<circle
+												cx="10"
+												cy="7"
+												r="6"
+												data-original="#000000"
+											/>
+											<title>User</title>
 											<circle
 												cx="10"
 												cy="7"
@@ -159,19 +165,24 @@ export const Login = () => {
 										Logar
 									</button>
 								</div>
-								<p className="text-slate-800 text-sm !mt-6 text-center">
-									Não possui uma conta?{" "}
-									<a
-										href="www"
-										className="text-green-600 hover:underline ml-1 whitespace-nowrap font-semibold"
-										onClick={(e) => {
-											e.preventDefault();
-											navigate("/register");
-										}}
-									>
-										Registrar
-									</a>
-								</p>
+								<div className="relative w-full mt-6 pr-16">
+									<p className="text-slate-800 text-sm !mt-6 text-center">
+										Não possui uma conta?{" "}
+										<a
+											href="www"
+											className="text-green-600 hover:underline ml-1 whitespace-nowrap font-semibold"
+											onClick={(e) => {
+												e.preventDefault();
+												navigate("/register");
+											}}
+										>
+											Registrar
+										</a>
+									</p>
+									<div className="absolute right-0 top-1/2 -translate-y-1/2">
+										<ThemeButton />
+									</div>
+								</div>
 							</form>
 						</div>
 					</div>
