@@ -3,8 +3,6 @@ import { useState } from "react";
 import { InputElements } from "../../components/InputElements/InputElements";
 import { Sidebar } from "../../components/Sidebar/Sidebar";
 
-const inputClassNormal =
-	"flex-1 text-text text-sm border placeholder-text border-text rounded-md outline-green-600 min-w-20 max-w-20";
 const labelClassNormal = "text-center font-semibold min-w-20 max-w-20";
 
 const farm = "fazenda bocaial";
@@ -35,28 +33,9 @@ type FormLabel = (typeof labels)[number];
 type FormTemplate = { [key in FormLabel]: string };
 
 export const Analysis = () => {
-	const formTemplate: FormTemplate = {
-		info1: "",
-		info2: "",
-		info3: "",
-		info4: "",
-		info5: "",
-		info6: "",
-		info7: "",
-		info8: "",
-		info9: "",
-		info10: "",
-		info11: "",
-		info12: "",
-		info13: "",
-		info14: "",
-		info15: "",
-		info16: "",
-		info17: "",
-		info18: "",
-		info19: "",
-		info20: "",
-	};
+	const formTemplate: FormTemplate = Object.fromEntries(
+		labels.map((label) => [label, ""]),
+	) as FormTemplate;
 
 	const [infos, setInfos] = useState([formTemplate]);
 
