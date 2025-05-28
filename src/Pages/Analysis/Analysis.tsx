@@ -1,5 +1,6 @@
 import "./style.module.css";
 import { useState } from "react";
+import { ButtonPattern } from "../../components/ButtonPattern/ButtonPattrern";
 import { InputElements } from "../../components/InputElements/InputElements";
 import { Sidebar } from "../../components/Sidebar/Sidebar";
 
@@ -334,13 +335,11 @@ export const Analysis = () => {
 					</div>
 				</div>
 
-				<button
-					type="submit"
-					className="mt-2 bottom-1/10 left-1/2 w-1/10 min-w-25 py-3 text-sm tracking-wider font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none cursor-pointer"
-					onClick={() => console.log(infos)}
-				>
-					Salvar
-				</button>
+				<ButtonPattern
+					type={"button"}
+					value={"Salvar"}
+					functionOnClick={() => console.log(infos)}
+				/>
 			</div>
 		</div>
 	);
