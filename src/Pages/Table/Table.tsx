@@ -3,32 +3,32 @@ import { type ChartDataItem, Charts } from "../../components/Charts/Charts";
 import { Sidebar } from "../../components/Sidebar/Sidebar";
 
 const chartData: ChartDataItem[] = [
-	{ element: "pH", running: 450, swimming: 300 },
-	{ element: "CO", running: 380, swimming: 420 },
-	{ element: "MO", running: 520, swimming: 120 },
-	{ element: "CO", running: 140, swimming: 550 },
-	{ element: "P", running: 600, swimming: 350 },
-	{ element: "K", running: 480, swimming: 400 },
-	{ element: "Ca", running: 480, swimming: 500 },
-	{ element: "Mg", running: 480, swimming: 500 },
-	{ element: "S", running: 140, swimming: 550 },
-	{ element: "B", running: 600, swimming: 350 },
-	{ element: "Zn", running: 480, swimming: 400 },
-	{ element: "Cu", running: 480, swimming: 500 },
-	{ element: "Mn", running: 480, swimming: 500 },
-	{ element: "Fe", running: 480, swimming: 400 },
-	{ element: "Al", running: 480, swimming: 500 },
-	{ element: "CTC", running: 480, swimming: 500 },
-	{ element: "V%", running: 140, swimming: 550 },
-	{ element: "H+Al", running: 600, swimming: 350 },
+	{ element: "pH", current: 450, missing: 300 },
+	{ element: "CO", current: 380, missing: 420 },
+	{ element: "MO", current: 520, missing: 120 },
+	{ element: "CO", current: 140, missing: 550 },
+	{ element: "P", current: 600, missing: 350 },
+	{ element: "K", current: 480, missing: 400 },
+	{ element: "Ca", current: 480, missing: 500 },
+	{ element: "Mg", current: 480, missing: 500 },
+	{ element: "S", current: 140, missing: 550 },
+	{ element: "B", current: 600, missing: 350 },
+	{ element: "Zn", current: 480, missing: 400 },
+	{ element: "Cu", current: 480, missing: 500 },
+	{ element: "Mn", current: 480, missing: 500 },
+	{ element: "Fe", current: 480, missing: 400 },
+	{ element: "Al", current: 480, missing: 500 },
+	{ element: "CTC", current: 480, missing: 500 },
+	{ element: "V%", current: 140, missing: 550 },
+	{ element: "H+Al", current: 600, missing: 350 },
 ];
 
 const chartConfig = {
-	running: {
+	current: {
 		label: "Atual",
 		color: "hsl(var(--chart-1))",
 	},
-	swimming: {
+	missing: {
 		label: "Ideal",
 		color: "hsl(var(--chart-2))",
 	},

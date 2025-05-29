@@ -1,5 +1,5 @@
 import "./styles.module.css";
-import { Bar, BarChart, XAxis } from "recharts";
+import { Bar, BarChart, XAxis, YAxis } from "recharts";
 
 import {
 	Card,
@@ -18,8 +18,8 @@ import {
 
 export type ChartDataItem = {
 	element: string;
-	running: number;
-	swimming: number;
+	current: number;
+	missing: number;
 };
 
 export function Charts({
@@ -30,6 +30,15 @@ export function Charts({
 	chartData: ChartDataItem[];
 }) {
 	const elements = chartData.map((item) => item.element);
+
+	const max = Math.max(...chartData.map((item) => item.current + item.missing));
+
+	const steps = 15;
+	const ticksArray = Array.from(
+		{ length: steps + 1 },
+		(_, i) => (i * max) / steps,
+	);
+
 	return (
 		<Card>
 			<CardHeader>
@@ -43,19 +52,31 @@ export function Charts({
 					<BarChart accessibilityLayer data={chartData}>
 						<XAxis
 							dataKey="Nutriente"
-							tickLine={false}
+							tickLine={true}
 							tickMargin={10}
-							axisLine={false}
+							axisLine={true}
 							tickFormatter={(_value, index) => elements[index]}
 						/>
+						<YAxis
+							dataKey=""
+							tickLine={true}
+							tickMargin={10}
+							axisLine={true}
+							tickFormatter={(_value, index) => {
+								if (index === undefined || index >= ticksArray.length)
+									return "";
+								return ticksArray[index].toFixed(0); // arredondar para inteiro, ou formatar do jeito que quiser
+							}}
+							ticks={ticksArray}
+						/>
 						<Bar
-							dataKey="running"
+							dataKey="current"
 							stackId="a"
 							fill="var(--chart-1)"
 							radius={[0, 0, 4, 4]}
 						/>
 						<Bar
-							dataKey="swimming"
+							dataKey="missing"
 							stackId="a"
 							fill="var(--chart-2)"
 							radius={[4, 4, 0, 0]}
