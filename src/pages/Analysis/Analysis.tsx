@@ -74,9 +74,12 @@ export const Analysis = () => {
 		<div>
 			<Sidebar />
 			<div className="bg-[var(--gray-100)] text-center pt-[0vh] h-[100vh]">
-				<h1 className="text-4xl text-[var(--text-default)] lg:pt-[3vh] pt-[8vh] mb-[3vh] font-family-display">
+				<h1 className="pt-10 text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[var(--primary)] to-[var(--link-color)] drop-shadow-lg font-family-display mb-2">
 					Cadastro de Análises
 				</h1>
+				<p className="text-[var(--text-muted)] text-lg mb-6">
+					Gerencie suas amostras de solo facilmente
+				</p>
 				<div className="flex items-center justify-center bg-opacity-50">
 					<div className="lg:w-[80vw] w-[100vw] h-[75vh] overflow-y-auto scrollbar p-6 rounded-lg shadow-xl bg-[var(--gray-300)]">
 						<div className="flex w-max mb-5 px-2 rounded-md gap-2 items-center bg-white-150 shadow-lg bg-surface text-[var(--text-default)]">
