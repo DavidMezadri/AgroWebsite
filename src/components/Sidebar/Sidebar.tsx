@@ -5,7 +5,7 @@ import "./styles.module.css";
 export const Sidebar = () => {
 	const [onClickOpen, onClickClose] = useState(false);
 	return (
-		<div className="fixed">
+		<div className="fixed z-50">
 			<div
 				className={`hidden lg:block ${onClickOpen ? "w-30" : "w-9"} duration-300 h-screen bg-surface relative`}
 			>
