@@ -61,11 +61,11 @@ export const Sidebar = () => {
 						>
 							Sobre
 						</button>
-						<ThemeButton
-							className={`flex items-center bg-[var(--button-color)] justify-center hover:bg-accent-hover hover:drop-shadow-[0_0_2px_white] rounded-full p-2 cursor-pointer text-lg ${
-								onClickOpen ? "w-30" : "w-9"
-							} duration-300`}
-						/>
+						<div className="flex align-center justify-center">
+							<ThemeButton
+								className={`w-12 h-12 flex items-center justify-center rounded-full bg-[var(--button-color)] hover:bg-accent-hover hover:drop-shadow-[0_0_2px_white] cursor-pointer transition-all duration-300 align-center`}
+							/>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -118,11 +118,11 @@ export const Sidebar = () => {
 						>
 							Sobre
 						</button>
-						<ThemeButton
-							className={
-								"h-[10vh] flex items-center text-3xl justify-center bg-accent hover:bg-accent-hover hover:drop-shadow-[0_0_2px_white] rounded-full p-2 text-text duration-300 hover:bg-[var(--link-hover)]"
-							}
-						/>
+						<div className="flex align-center justify-center">
+							<ThemeButton
+								className={`w-12 h-12 flex items-center justify-center rounded-full bg-[var(--button-color)] hover:bg-accent-hover hover:drop-shadow-[0_0_2px_white] cursor-pointer transition-all duration-300 align-center`}
+							/>
+						</div>
 					</div>
 				</div>
 			</div>
