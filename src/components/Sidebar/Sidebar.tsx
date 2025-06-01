@@ -2,6 +2,7 @@ import { ArrowBigRightIcon, MenuIcon, XIcon } from "lucide-react";
 import { useState } from "react";
 import { ThemeButton } from "../ThemeButton/ThemeButton";
 import "./styles.module.css";
+import "../../styles/theme.css";
 
 export const Sidebar = () => {
 	const [onClickOpen, onClickClose] = useState(false);
@@ -10,7 +11,7 @@ export const Sidebar = () => {
 			<div
 				className={`hidden lg:block ${
 					onClickOpen ? "w-30" : "w-9"
-				} duration-300 h-screen bg-surface relative`}
+				} duration-300 h-screen bg-[var(--gray-400)] border-[var(--text-default)] border-r-1 rounded-r-lg relative`}
 			>
 				<ArrowBigRightIcon
 					fill="none"
@@ -30,7 +31,7 @@ export const Sidebar = () => {
 						{" "}
 						<button
 							type="button"
-							className={`text-center border-accent bg-accent hover:bg-[var(--link-hover)] hover:drop-shadow-[0_0_2px_white] rounded-full p-2 cursor-pointer text-lg bg-green-600 ${
+							className={`text-center border-accent bg-accent hover:bg-[var(--link-hover)] hover:drop-shadow-[0_0_2px_white] rounded-full p-2 cursor-pointer text-lg bg-[var(--button-color)] ${
 								onClickOpen ? "w-30" : "w-9"
 							} duration-300`}
 						>
@@ -38,7 +39,7 @@ export const Sidebar = () => {
 						</button>
 						<button
 							type="button"
-							className={`text-center border-accent bg-accent hover:bg-[var(--link-hover)] hover:drop-shadow-[0_0_2px_white] rounded-full p-2 cursor-pointer text-lg bg-green-600 ${
+							className={`text-center border-accent bg-accent hover:bg-[var(--link-hover)] hover:drop-shadow-[0_0_2px_white] rounded-full p-2 cursor-pointer text-lg bg-[var(--button-color)] ${
 								onClickOpen ? "w-30" : "w-9"
 							} duration-300`}
 						>
@@ -46,7 +47,7 @@ export const Sidebar = () => {
 						</button>
 						<button
 							type="button"
-							className={`text-center border-accent bg-accent hover:drop-shadow-[0_0_2px_white] hover:bg-[var(--link-hover)] rounded-full p-2 cursor-pointer text-lg bg-green-600 ${
+							className={`text-center border-accent bg-accent hover:drop-shadow-[0_0_2px_white] hover:bg-[var(--link-hover)] rounded-full p-2 cursor-pointer text-lg bg-[var(--button-color)] ${
 								onClickOpen ? "w-30" : "w-9"
 							} duration-300`}
 						>
@@ -54,14 +55,14 @@ export const Sidebar = () => {
 						</button>
 						<button
 							type="button"
-							className={`text-center border-accent bg-accent hover:bg-[var(--link-hover)] hover:drop-shadow-[0_0_2px_white] rounded-full p-2 cursor-pointer text-lg bg-green-600 ${
+							className={`text-center border-accent bg-accent hover:bg-[var(--link-hover)] hover:drop-shadow-[0_0_2px_white] rounded-full p-2 cursor-pointer text-lg bg-[var(--button-color)] ${
 								onClickOpen ? "w-30" : "w-9"
 							} duration-300`}
 						>
 							Sobre
 						</button>
 						<ThemeButton
-							className={`flex items-center justify-center border-1 border-accent bg-accent hover:bg-accent-hover hover:drop-shadow-[0_0_2px_white] rounded-full p-2 cursor-pointer text-lg bg-[var(--success)] ${
+							className={`flex items-center bg-[var(--button-color)] justify-center hover:bg-accent-hover hover:drop-shadow-[0_0_2px_white] rounded-full p-2 cursor-pointer text-lg ${
 								onClickOpen ? "w-30" : "w-9"
 							} duration-300`}
 						/>
@@ -71,7 +72,7 @@ export const Sidebar = () => {
 			<div
 				className={`${
 					onClickOpen ? "w-[100vw]" : "w-0"
-				} duration-300 h-screen bg-surface relative`}
+				} duration-300 h-screen bg-[var(--gray-400)] relative`}
 			>
 				<XIcon
 					fill="none"
@@ -88,7 +89,7 @@ export const Sidebar = () => {
 						<button
 							type="button"
 							className={
-								"h-[10vh] flex items-center text-3xl justify-center bg-accent hover:bg-accent-hover hover:drop-shadow-[0_0_2px_white] rounded-full p-2 text-text duration-300"
+								"h-[10vh] flex items-center text-3xl justify-center hover:bg-accent-hover hover:drop-shadow-[0_0_2px_white] rounded-full p-2 text-text duration-300 bg-[var(--button-color)] hover:bg-[var(--link-hover)]"
 							}
 						>
 							Fazendas
@@ -96,7 +97,7 @@ export const Sidebar = () => {
 						<button
 							type="button"
 							className={
-								"h-[10vh] flex items-center text-3xl justify-center bg-accent hover:bg-accent-hover hover:drop-shadow-[0_0_2px_white] rounded-full p-2 text-text duration-300"
+								"h-[10vh] flex items-center text-3xl justify-center hover:bg-accent-hover hover:drop-shadow-[0_0_2px_white] rounded-full p-2 text-text duration-300 bg-[var(--button-color)] hover:bg-[var(--link-hover)]"
 							}
 						>
 							Análises
@@ -104,7 +105,7 @@ export const Sidebar = () => {
 						<button
 							type="button"
 							className={
-								" h-[10vh] flex items-center text-3xl justify-center bg-accent hover:bg-accent-hover hover:drop-shadow-[0_0_2px_white] rounded-full p-2 text-text duration-300"
+								" h-[10vh] flex items-center text-3xl justify-center bg-[var(--button-color)] hover:bg-accent-hover hover:drop-shadow-[0_0_2px_white] rounded-full p-2 text-text duration-300 hover:bg-[var(--link-hover)]"
 							}
 						>
 							Outros
@@ -112,14 +113,14 @@ export const Sidebar = () => {
 						<button
 							type="button"
 							className={
-								"h-[10vh] flex items-center text-3xl justify-center bg-accent hover:bg-accent-hover hover:drop-shadow-[0_0_2px_white] rounded-full p-2 text-text duration-300"
+								"h-[10vh] flex items-center text-3xl justify-center bg-[var(--button-color)] hover:bg-accent-hover hover:drop-shadow-[0_0_2px_white] rounded-full p-2 text-text duration-300 hover:bg-[var(--link-hover)]"
 							}
 						>
 							Sobre
 						</button>
 						<ThemeButton
 							className={
-								"h-[10vh] flex items-center text-3xl justify-center bg-accent hover:bg-accent-hover hover:drop-shadow-[0_0_2px_white] rounded-full p-2 text-text duration-300"
+								"h-[10vh] flex items-center text-3xl justify-center bg-accent hover:bg-accent-hover hover:drop-shadow-[0_0_2px_white] rounded-full p-2 text-text duration-300 hover:bg-[var(--link-hover)]"
 							}
 						/>
 					</div>
