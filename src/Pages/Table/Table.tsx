@@ -2,11 +2,11 @@ import "./styles.module.css";
 import "../../styles/theme.css";
 import { useState } from "react";
 import {
+	type ChartDataItem,
+	Charts,
 	Sidebar,
 	TableAnalysis,
 	type TableDataProps,
-	type ChartDataItem,
-	Charts,
 } from "../../components/index";
 
 const data = [

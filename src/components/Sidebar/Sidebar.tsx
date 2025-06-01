@@ -89,7 +89,7 @@ export const Sidebar = () => {
 						<button
 							type="button"
 							className={
-								"h-[10vh] flex items-center text-3xl justify-center hover:bg-accent-hover hover:drop-shadow-[0_0_2px_white] rounded-full p-2 text-text duration-300 bg-[var(--button-color)] hover:bg-[var(--link-hover)]"
+								"h-[10vh] flex items-center text-3xl justify-center hover:bg-accent-hover hover:drop-shadow-[0_0_2px_white] rounded-full p-2 text-text duration-300 bg-[var(--button-color)] hover:bg-[var(--link-hover)] cursor-pointer"
 							}
 						>
 							Fazendas
@@ -97,7 +97,7 @@ export const Sidebar = () => {
 						<button
 							type="button"
 							className={
-								"h-[10vh] flex items-center text-3xl justify-center hover:bg-accent-hover hover:drop-shadow-[0_0_2px_white] rounded-full p-2 text-text duration-300 bg-[var(--button-color)] hover:bg-[var(--link-hover)]"
+								"h-[10vh] flex items-center text-3xl justify-center hover:bg-accent-hover hover:drop-shadow-[0_0_2px_white] rounded-full p-2 text-text duration-300 bg-[var(--button-color)] hover:bg-[var(--link-hover)] cursor-pointer"
 							}
 						>
 							Análises
@@ -105,7 +105,7 @@ export const Sidebar = () => {
 						<button
 							type="button"
 							className={
-								" h-[10vh] flex items-center text-3xl justify-center bg-[var(--button-color)] hover:bg-accent-hover hover:drop-shadow-[0_0_2px_white] rounded-full p-2 text-text duration-300 hover:bg-[var(--link-hover)]"
+								" h-[10vh] flex items-center text-3xl justify-center bg-[var(--button-color)] hover:bg-accent-hover hover:drop-shadow-[0_0_2px_white] rounded-full p-2 text-text duration-300 hover:bg-[var(--link-hover)] cursor-pointer"
 							}
 						>
 							Outros
@@ -113,7 +113,7 @@ export const Sidebar = () => {
 						<button
 							type="button"
 							className={
-								"h-[10vh] flex items-center text-3xl justify-center bg-[var(--button-color)] hover:bg-accent-hover hover:drop-shadow-[0_0_2px_white] rounded-full p-2 text-text duration-300 hover:bg-[var(--link-hover)]"
+								"h-[10vh] flex items-center text-3xl justify-center bg-[var(--button-color)] hover:bg-accent-hover hover:drop-shadow-[0_0_2px_white] rounded-full p-2 text-text duration-300 hover:bg-[var(--link-hover)] cursor-pointer"
 							}
 						>
 							Sobre

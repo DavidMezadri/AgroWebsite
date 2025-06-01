@@ -34,7 +34,7 @@ type FormTemplate = { [key in FormLabel]: string };
 
 export const Analysis = () => {
 	const formTemplate: FormTemplate = Object.fromEntries(
-		labels.map((label) => [label, ""])
+		labels.map((label) => [label, ""]),
 	) as FormTemplate;
 
 	const [infos, setInfos] = useState([formTemplate]);
@@ -48,7 +48,7 @@ export const Analysis = () => {
 		if (Object.values(infos[index]).some((value) => value.trim() !== ""))
 			if (
 				!window.confirm(
-					"Você possui informaçoes digitadas. Tem certeza que deseja remover?"
+					"Você possui informaçoes digitadas. Tem certeza que deseja remover?",
 				)
 			) {
 				return;
@@ -74,7 +74,7 @@ export const Analysis = () => {
 		<div>
 			<Sidebar />
 			<div className="bg-[var(--gray-100)] text-center pt-[0vh] h-[100vh]">
-				<h1 className="pt-10 text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[var(--primary)] to-[var(--link-color)] drop-shadow-lg font-family-display mb-2">
+				<h1 className="pt-5 text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[var(--primary)] to-[var(--link-color)] drop-shadow-lg font-family-display mb-2">
 					Cadastro de Análises
 				</h1>
 				<p className="text-[var(--text-muted)] text-lg mb-6">
@@ -103,10 +103,7 @@ export const Analysis = () => {
 									/>
 								</svg>
 							</button>
-							<label
-								htmlFor=""
-								className={labelClassNormal}
-							>
+							<label htmlFor="" className={labelClassNormal}>
 								ID da Amostra
 							</label>
 							<label
@@ -121,106 +118,55 @@ export const Analysis = () => {
 							>
 								Data da Amostra
 							</label>
-							<label
-								htmlFor=""
-								className={labelClassNormal}
-							>
+							<label htmlFor="" className={labelClassNormal}>
 								pH do Solo
 							</label>
-							<label
-								htmlFor=""
-								className={labelClassNormal}
-							>
+							<label htmlFor="" className={labelClassNormal}>
 								Matéria Orgânica
 							</label>
-							<label
-								htmlFor=""
-								className={labelClassNormal}
-							>
+							<label htmlFor="" className={labelClassNormal}>
 								Carbono Orgânico
 							</label>
-							<label
-								htmlFor=""
-								className={labelClassNormal}
-							>
+							<label htmlFor="" className={labelClassNormal}>
 								Fósforo (P)
 							</label>
-							<label
-								htmlFor=""
-								className={labelClassNormal}
-							>
+							<label htmlFor="" className={labelClassNormal}>
 								Potássio (K)
 							</label>
-							<label
-								htmlFor=""
-								className={labelClassNormal}
-							>
+							<label htmlFor="" className={labelClassNormal}>
 								Cálcio (Ca)
 							</label>
-							<label
-								htmlFor=""
-								className={labelClassNormal}
-							>
+							<label htmlFor="" className={labelClassNormal}>
 								Magnésio (Mg)
 							</label>
-							<label
-								htmlFor=""
-								className={labelClassNormal}
-							>
+							<label htmlFor="" className={labelClassNormal}>
 								Enxofre (S)
 							</label>
-							<label
-								htmlFor=""
-								className={labelClassNormal}
-							>
+							<label htmlFor="" className={labelClassNormal}>
 								Boro (B)
 							</label>
-							<label
-								htmlFor=""
-								className={labelClassNormal}
-							>
+							<label htmlFor="" className={labelClassNormal}>
 								Zinco (Zn)
 							</label>
-							<label
-								htmlFor=""
-								className={labelClassNormal}
-							>
+							<label htmlFor="" className={labelClassNormal}>
 								Cobre (Cu)
 							</label>
-							<label
-								htmlFor=""
-								className={labelClassNormal}
-							>
+							<label htmlFor="" className={labelClassNormal}>
 								Manganês (Mn)
 							</label>
-							<label
-								htmlFor=""
-								className={labelClassNormal}
-							>
+							<label htmlFor="" className={labelClassNormal}>
 								Ferro (Fe)
 							</label>
-							<label
-								htmlFor=""
-								className={labelClassNormal}
-							>
+							<label htmlFor="" className={labelClassNormal}>
 								Alumínio (Al³⁺)
 							</label>
-							<label
-								htmlFor=""
-								className={labelClassNormal}
-							>
+							<label htmlFor="" className={labelClassNormal}>
 								CTC
 							</label>
-							<label
-								htmlFor=""
-								className={labelClassNormal}
-							>
+							<label htmlFor="" className={labelClassNormal}>
 								(V%)
 							</label>
-							<label
-								htmlFor=""
-								className={labelClassNormal}
-							>
+							<label htmlFor="" className={labelClassNormal}>
 								(H+Al)
 							</label>
 						</div>
@@ -241,9 +187,7 @@ export const Analysis = () => {
 											<button
 												type="button"
 												className="flex justify-center items-center rounded-md focus:outline-none cursor-pointer min-w-10 max-w-10"
-												onClick={(_e) =>
-													removeInfoItem(index)
-												}
+												onClick={(_e) => removeInfoItem(index)}
 											>
 												<svg
 													xmlns="http://www.w3.org/2000/svg"
@@ -251,9 +195,7 @@ export const Analysis = () => {
 													fill="none"
 													viewBox="0 0 24 24"
 												>
-													<title id="iconTitle">
-														Remover item
-													</title>
+													<title id="iconTitle">Remover item</title>
 													<path
 														d="M4 6H20M16 6L15.7294 5.18807C15.4671 .40125 15.3359 .00784 15.0927 3.71698C14.8779 3.46013 14.6021 3.26132 14.2905 3.13878C13.9376 3 13.523 3 12.6936 3H11.3064C10.477 3 10.0624 3 9.70951 3.13878C9.39792 3.26132 9.12208 3.46013 8.90729 3.71698C8.66405 .00784 8.53292 .40125 8.27064 5.18807L8 6M18 6V16.2C18 17.8802 18 18.7202 17.673 19.362C17.3854 19.9265 16.9265 20.3854 16.362 20.673C15.7202 21 14.8802 21 13.2 21H10.8C9.11984 21 8.27976 21 7.63803 20.673C7.07354 20.3854 6.6146 19.9265 6.32698 19.362C6 18.7202 6 17.8802 6 16.2V6M14 10V17M10 10V17"
 														stroke="currentColor"
