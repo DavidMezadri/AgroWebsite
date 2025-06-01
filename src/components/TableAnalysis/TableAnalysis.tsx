@@ -22,24 +22,40 @@ type TableAnalysisProps = TableDataProps & {
 export const TableAnalysis = (tableData: TableAnalysisProps) => {
 	return (
 		<Table>
-			<TableCaption className="caption-top text-2xl font-bold">
+			<TableCaption className="caption-top text-2xl font-bold text-[var(--text-default)]">
 				{tableData.title}
 			</TableCaption>
 
 			<TableHeader>
 				<TableRow className="flex justify-between caption-top text-center">
 					{tableData.headLabels.map((i) => {
-						return <TableHead key={i}>{i}</TableHead>;
+						return (
+							<TableHead
+								className="text-[var(--text-default)]"
+								key={i}
+							>
+								{i}
+							</TableHead>
+						);
 					})}
-					<TableHead>Ações</TableHead>
+					<TableHead className="text-[var(--text-default)]">
+						Ações
+					</TableHead>
 				</TableRow>
 			</TableHeader>
 			<TableBody>
 				{tableData.data.map((i) => {
 					return (
-						<TableRow key={i.id} className="flex justify-between items-center">
-							<TableCell className="font-medium">{i.id}</TableCell>
-							<TableCell className="font-medium">{i.name}</TableCell>
+						<TableRow
+							key={i.id}
+							className="flex justify-between items-center "
+						>
+							<TableCell className="font-medium">
+								{i.id}
+							</TableCell>
+							<TableCell className="font-medium">
+								{i.name}
+							</TableCell>
 							<TableCell className="font-medium">
 								{i.date.toLocaleDateString()}
 							</TableCell>

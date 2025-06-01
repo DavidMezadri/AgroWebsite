@@ -1,4 +1,9 @@
-export { ButtonPattern } from "./ButtonPattern/ButtonPattrern";
-export { ThemeButton } from "./ThemeBotton/ThemeButton";
+export { ButtonPattern } from "./ButtonPattern/ButtonPattern";
+export { ThemeButton } from "./ThemeButton/ThemeButton";
 export { InputElements } from "./InputElements/InputElements";
 export { Sidebar } from "./Sidebar/Sidebar";
+export {
+	TableAnalysis,
+	type TableDataProps,
+} from "./TableAnalysis/TableAnalysis";
+export { type ChartDataItem, Charts } from "./Charts/Charts";

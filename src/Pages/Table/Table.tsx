@@ -1,11 +1,13 @@
 import "./styles.module.css";
+import "../../styles/theme.css";
 import { useState } from "react";
-import { type ChartDataItem, Charts } from "../../components/Charts/Charts";
-import { Sidebar } from "../../components/Sidebar/Sidebar";
 import {
+	Sidebar,
 	TableAnalysis,
 	type TableDataProps,
-} from "../../components/TableAnalysis/TableAnalysis";
+	type ChartDataItem,
+	Charts,
+} from "../../components/index";
 
 const data = [
 	{ id: 1, name: "Amostra 1", date: new Date("2008-02-01") },
@@ -114,10 +116,12 @@ export const Table = () => {
 			</div>
 			{/* tabela */}
 			<div
-				className={`fixed h-full w-full bg-background ${tableEye ? "z-1 opacity-100" : "-z-1 opacity-0"} duration-800`}
+				className={`fixed h-full w-full bg-[var(--gray-100)] ${
+					tableEye ? "z-1 opacity-100" : "-z-1 opacity-0"
+				} duration-800`}
 			>
-				<div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-background overflow-y-auto rounded-lg border-1 border-border">
-					<div className="lg:w-[70vw] w-[100vw] h-[81vh] text-text">
+				<div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[var(--gray-300)] overflow-y-auto rounded-lg border-1 border-border">
+					<div className="lg:w-[70vw] w-[100vw] h-[81vh] text-[var(--text-default)]">
 						<div>
 							<TableAnalysis
 								{...dataTable}

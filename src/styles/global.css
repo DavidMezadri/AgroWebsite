@@ -1,95 +1,35 @@
 @import "./tailwind.css";
 
-@theme {
-    --color-background: #202123;
+:root {
+	/* Bordas, linhas */
+	--color-border: #3e3f4b;
 
-    /* Superfícies (cards, inputs) */
-    --color-surface: #2a2b32;
-    --color-surface-variant: #343541;
+	/* Texto */
+	--color-text: #e3e3e3;
+	--color-text-muted: #a1a1aa;
 
-    /* Bordas, linhas */
-    --color-border: #3e3f4b;
+	/* Verde de destaque (ex: botões, links, ícones) */
+	--color-accent: #10b981;
+	/* Tailwind emerald-500 */
+	--color-accent-hover: #059669;
 
-    /* Texto */
-    --color-text: #e3e3e3;
-    --color-text-muted: #a1a1aa;
+	/* Verde adicional para ícones, gráficos, etc */
+	--color-success: #22c55e;
+	--color-success-dark: #15803d;
 
-    /* Verde de destaque (ex: botões, links, ícones) */
-    --color-accent: #10b981;
-    /* Tailwind emerald-500 */
-    --color-accent-hover: #059669;
+	--font-family-display: "Inter", "Segoe UI", Tahoma, Geneva, Verdana,
+		sans-serif;
 
-    /* Verde adicional para ícones, gráficos, etc */
-    --color-success: #22c55e;
-    --color-success-dark: #15803d;
+	/* Fonte para labels e textos menores - mais neutra e clean */
+	--font-family-label: "Roboto", "Helvetica Neue", Helvetica, Arial,
+		sans-serif;
 
-    --font-family-display: "Inter", "Segoe UI", Tahoma, Geneva, Verdana,
-        sans-serif;
+	--font-weight-bold: 700;
+	--font-weight-medium: 500;
+	--font-weight-regular: 400;
 
-    /* Fonte para labels e textos menores - mais neutra e clean */
-    --font-family-label: "Roboto", "Helvetica Neue", Helvetica, Arial,
-        sans-serif;
-
-    --font-weight-bold: 700;
-    --font-weight-medium: 500;
-    --font-weight-regular: 400;
-
-
-    --color-primary: 142 86% 28%;
-    --primary-foreground: 356 29% 98%;
-    --secondary: 240 4.8% 95.9%;
-    --secondary-foreground: 240 5.9% 10%;
-
-    --color-background: #343541;
-    --color-foreground: #09090b;
-    --color-card: #ffffff;
-    --color-card-foreground: #09090b;
-    --color-popover: #ffffff;
-    --color-popover-foreground: #09090b;
-    --color-primary: #247a39;
-    --color-primary-foreground: #fdf4f4;
-    --color-secondary: #f3f4f6;
-    --color-secondary-foreground: #1a1b1e;
-    --color-muted: #f3f4f6;
-    --color-muted-foreground: #6e7280;
-    --color-accent: #10b981;
-    --color-accent-foreground: #1a1b1e;
-    --color-destructive: #e5484d;
-    --color-destructive-foreground: #fafafa;
-    --color-border: #e5e7eb;
-    --color-input: #e5e7eb;
-    --color-ring: #247a39;
-    --color-chart-1: #1b4d2d;
-    --color-chart-2: #35cc63;
-    --color-chart-3: #3fa42f;
-    --color-chart-4: #243a1e;
-    --color-chart-5: #181e15;
-}
-
-.dark {
-    --background: 240 10% 3.9%;
-    --foreground: 0 0% 98%;
-    --card: 240 10% 3.9%;
-    --card-foreground: 0 0% 20%;
-    --popover: 240 10% 3.9%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 142 86% 28%;
-    --primary-foreground: 356 29% 98%;
-    --secondary: 240 4.8% 95.9%;
-    --secondary-foreground: 240 5.9% 10%;
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
-    --accent: 240 3.7% 15.9%;
-    --accent-foreground: 0 0% 98%;
-    --destructive: 0 72% 51%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
-    --ring: 142 86% 28%;
-    --chart-1: 142 88% 28%;
-    --chart-2: 139 65% 20%;
-    --chart-3: 140 74% 24%;
-    --chart-4: 137 55% 15%;
-    --chart-5: 141 40% 9%;
-    --color-running: 141 40% 9%;
+	/* --success: #22c55e;
+	--warning: #eab308;
+	--error: #991b1b;
+	--info: #0ea5e9; */
 }

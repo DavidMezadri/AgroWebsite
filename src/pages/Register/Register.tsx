@@ -7,16 +7,18 @@ export const Register = () => {
 	return (
 		<div className="flex flex-col justify-center sm:h-screen p-4 bg-[var(--gray-200)]">
 			<div className="bg-white-500 max-w-md w-full mx-auto border border-slate-300 rounded-2xl p-8 bg-white">
-				<div className="text-center mb-5">
+				<div className="flex justify-center items-center gap-6 mb-2">
+					<h1 className="text-5xl font-bold text-[var(--primary)] font-family-display text-center">
+						Registro
+					</h1>
 					<a href="login">
 						<img
 							src="download.svg"
 							alt="logo"
-							className="w-20 inline-block"
+							className="w-24 h-24 object-contain"
 						/>
 					</a>
 				</div>
-
 				<form>
 					<div className="space-y-6">
 						<div>

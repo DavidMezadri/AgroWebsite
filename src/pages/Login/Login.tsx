@@ -41,23 +41,21 @@ export const Login = () => {
 			<div className="bg-[var(--gray-200)]">
 				<div className="min-h-screen flex flex-col items-center justify-center py-6 px-4 bg-[var(--gray-200)]">
 					<div className="max-w-md w-full">
-						<a href="www">
-							{
-								<img
-									src="./download.svg"
-									alt="logo"
-									className="w-20 mb-8 mx-auto block"
-								/>
-							}
-						</a>
-
 						<div className="p-8 rounded-2xl bg-white shadow">
-							<h2
-								className="text-slate-900 text-center text-3xl font-semibold"
-								style={{ color: "var(--text-default)" }}
-							>
-								Página de Login
-							</h2>
+							<div className="flex justify-center items-center gap-6 mb-2">
+								<h1 className="text-5xl font-bold text-[var(--primary)] font-family-display text-center">
+									Login
+								</h1>
+								<a href="">
+									{
+										<img
+											src="./download.svg"
+											alt="logo"
+											className="w-24 h-24"
+										/>
+									}
+								</a>
+							</div>
 							<form className="mt-12 space-y-6">
 								<div>
 									<label

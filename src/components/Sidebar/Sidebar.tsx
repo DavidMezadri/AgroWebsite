@@ -1,6 +1,6 @@
 import { ArrowBigRightIcon, MenuIcon, XIcon } from "lucide-react";
 import { useState } from "react";
-import { ThemeButton } from "../ThemeBotton/ThemeButton";
+import { ThemeButton } from "../ThemeButton/ThemeButton";
 import "./styles.module.css";
 
 export const Sidebar = () => {
@@ -14,7 +14,7 @@ export const Sidebar = () => {
 			>
 				<ArrowBigRightIcon
 					fill="none"
-					className={`absolute hover:drop-shadow-[0_0_9px_white] cursor-pointer rounded-full -right-3 top-9 w-9 h-9 border-3 border-text-muted text-text-muted ${
+					className={`text-[var(--text-default)] absolute hover:drop-shadow-[0_0_9px_white] cursor-pointer rounded-full -right-3 top-9 w-9 h-9 border-3 border-text-muted text-text-muted ${
 						onClickOpen && "rotate-180"
 					} duration-800`}
 					onClick={() => onClickClose(!onClickOpen)}
@@ -26,33 +26,42 @@ export const Sidebar = () => {
 					}}
 				/>
 				<div className="absolute right-0 top-30">
-					<div className="flex h-[80vh] flex-col justify-between w-30">
+					<div className="flex h-[80vh] flex-col justify-between w-30 text-[var(--text-default)] text-[var(--text-default)]">
+						{" "}
 						<button
 							type="button"
-							className={`text-center border-accent bg-accent hover:bg-accent-hover hover:drop-shadow-[0_0_2px_white] rounded-full p-2 cursor-pointer text-lg text-text ${onClickOpen ? "w-30" : "w-9"} duration-300`}
+							className={`text-center border-accent bg-accent hover:bg-[var(--link-hover)] hover:drop-shadow-[0_0_2px_white] rounded-full p-2 cursor-pointer text-lg bg-green-600 ${
+								onClickOpen ? "w-30" : "w-9"
+							} duration-300`}
 						>
 							Fazendas
 						</button>
 						<button
 							type="button"
-							className={`text-center border-accent bg-accent hover:bg-accent-hover hover:drop-shadow-[0_0_2px_white] rounded-full p-2 cursor-pointer text-lg text-text ${onClickOpen ? "w-30" : "w-9"} duration-300`}
+							className={`text-center border-accent bg-accent hover:bg-[var(--link-hover)] hover:drop-shadow-[0_0_2px_white] rounded-full p-2 cursor-pointer text-lg bg-green-600 ${
+								onClickOpen ? "w-30" : "w-9"
+							} duration-300`}
 						>
 							Análises
 						</button>
 						<button
 							type="button"
-							className={`text-center border-accent bg-accent hover:bg-accent-hover hover:drop-shadow-[0_0_2px_white] rounded-full p-2 cursor-pointer text-lg text-text ${onClickOpen ? "w-30" : "w-9"} duration-300`}
+							className={`text-center border-accent bg-accent hover:drop-shadow-[0_0_2px_white] hover:bg-[var(--link-hover)] rounded-full p-2 cursor-pointer text-lg bg-green-600 ${
+								onClickOpen ? "w-30" : "w-9"
+							} duration-300`}
 						>
 							Outros
 						</button>
 						<button
 							type="button"
-							className={`text-center border-accent bg-accent hover:bg-accent-hover hover:drop-shadow-[0_0_2px_white] rounded-full p-2 cursor-pointer text-lg text-text ${onClickOpen ? "w-30" : "w-9"} duration-300`}
+							className={`text-center border-accent bg-accent hover:bg-[var(--link-hover)] hover:drop-shadow-[0_0_2px_white] rounded-full p-2 cursor-pointer text-lg bg-green-600 ${
+								onClickOpen ? "w-30" : "w-9"
+							} duration-300`}
 						>
 							Sobre
 						</button>
 						<ThemeButton
-							className={`flex items-center justify-center border-1 border-accent bg-accent hover:bg-accent-hover hover:drop-shadow-[0_0_2px_white] rounded-full p-2 cursor-pointer text-lg text-text ${
+							className={`flex items-center justify-center border-1 border-accent bg-accent hover:bg-accent-hover hover:drop-shadow-[0_0_2px_white] rounded-full p-2 cursor-pointer text-lg bg-[var(--success)] ${
 								onClickOpen ? "w-30" : "w-9"
 							} duration-300`}
 						/>
