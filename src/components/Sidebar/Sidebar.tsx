@@ -1,16 +1,16 @@
 import { ArrowBigRightIcon, MenuIcon, XIcon } from "lucide-react";
-import { ThemeButton } from "../ThemeBotton/ThemeButton";
 import { useState } from "react";
+import { ThemeButton } from "../ThemeBotton/ThemeButton";
 import "./styles.module.css";
 
 export const Sidebar = () => {
 	const [onClickOpen, onClickClose] = useState(false);
 	return (
-		<div className="fixed z-50">
+		<div className="fixed lg:w-30 z-10">
 			<div
 				className={`hidden lg:block ${
 					onClickOpen ? "w-30" : "w-9"
-				} duration-300 h-screen bg-surface relative overflow-y-auto`}
+				} duration-300 h-screen bg-surface relative`}
 			>
 				<ArrowBigRightIcon
 					fill="none"
@@ -25,8 +25,8 @@ export const Sidebar = () => {
 						}
 					}}
 				/>
-				<div className="absolute  right-0 top-30">
-					<div className="flex flex-col gap-y-[15vh] w-30">
+				<div className="absolute right-0 top-30">
+					<div className="flex h-[80vh] flex-col justify-between w-30">
 						<button
 							type="button"
 							className={`text-center border-accent bg-accent hover:bg-accent-hover hover:drop-shadow-[0_0_2px_white] rounded-full p-2 cursor-pointer text-lg text-text ${onClickOpen ? "w-30" : "w-9"} duration-300`}
@@ -50,13 +50,12 @@ export const Sidebar = () => {
 							className={`text-center border-accent bg-accent hover:bg-accent-hover hover:drop-shadow-[0_0_2px_white] rounded-full p-2 cursor-pointer text-lg text-text ${onClickOpen ? "w-30" : "w-9"} duration-300`}
 						>
 							Sobre
-						</div>
+						</button>
 						<ThemeButton
 							className={`flex items-center justify-center border-1 border-accent bg-accent hover:bg-accent-hover hover:drop-shadow-[0_0_2px_white] rounded-full p-2 cursor-pointer text-lg text-text ${
 								onClickOpen ? "w-30" : "w-9"
 							} duration-300`}
 						/>
-						</button>
 					</div>
 				</div>
 			</div>
@@ -76,7 +75,7 @@ export const Sidebar = () => {
 					onClick={() => onClickClose(!onClickOpen)}
 				/>
 				<div className="absolute right-[50vw] top-20 translate-x-1/2">
-					<div className="flex flex-col gap-y-[10vh] w-80">
+					<div className="flex flex-col gap-y-[8vh] w-80">
 						<button
 							type="button"
 							className={
