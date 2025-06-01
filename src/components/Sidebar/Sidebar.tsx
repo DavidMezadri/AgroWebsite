@@ -1,4 +1,5 @@
 import { ArrowBigRightIcon, MenuIcon, XIcon } from "lucide-react";
+import { ThemeButton } from "../ThemeBotton/ThemeButton";
 import { useState } from "react";
 import "./styles.module.css";
 
@@ -7,11 +8,15 @@ export const Sidebar = () => {
 	return (
 		<div className="fixed z-50">
 			<div
-				className={`hidden lg:block ${onClickOpen ? "w-30" : "w-9"} duration-300 h-screen bg-surface relative`}
+				className={`hidden lg:block ${
+					onClickOpen ? "w-30" : "w-9"
+				} duration-300 h-screen bg-surface relative overflow-y-auto`}
 			>
 				<ArrowBigRightIcon
 					fill="none"
-					className={`absolute hover:drop-shadow-[0_0_9px_white] cursor-pointer rounded-full -right-3 top-9 w-9 h-9 border-3 border-text-muted text-text-muted ${onClickOpen && "rotate-180"} duration-800`}
+					className={`absolute hover:drop-shadow-[0_0_9px_white] cursor-pointer rounded-full -right-3 top-9 w-9 h-9 border-3 border-text-muted text-text-muted ${
+						onClickOpen && "rotate-180"
+					} duration-800`}
 					onClick={() => onClickClose(!onClickOpen)}
 					onKeyDown={(e) => {
 						if (e.key === "Enter" || e.key === " ") {
@@ -45,12 +50,20 @@ export const Sidebar = () => {
 							className={`text-center border-accent bg-accent hover:bg-accent-hover hover:drop-shadow-[0_0_2px_white] rounded-full p-2 cursor-pointer text-lg text-text ${onClickOpen ? "w-30" : "w-9"} duration-300`}
 						>
 							Sobre
+						</div>
+						<ThemeButton
+							className={`flex items-center justify-center border-1 border-accent bg-accent hover:bg-accent-hover hover:drop-shadow-[0_0_2px_white] rounded-full p-2 cursor-pointer text-lg text-text ${
+								onClickOpen ? "w-30" : "w-9"
+							} duration-300`}
+						/>
 						</button>
 					</div>
 				</div>
 			</div>
 			<div
-				className={`${onClickOpen ? "w-[100vw]" : "w-0"} duration-300 h-screen bg-surface relative`}
+				className={`${
+					onClickOpen ? "w-[100vw]" : "w-0"
+				} duration-300 h-screen bg-surface relative`}
 			>
 				<XIcon
 					fill="none"
@@ -83,7 +96,7 @@ export const Sidebar = () => {
 						<button
 							type="button"
 							className={
-								"h-[10vh] flex items-center text-3xl justify-center bg-accent hover:bg-accent-hover hover:drop-shadow-[0_0_2px_white] rounded-full p-2 text-text duration-300"
+								" h-[10vh] flex items-center text-3xl justify-center bg-accent hover:bg-accent-hover hover:drop-shadow-[0_0_2px_white] rounded-full p-2 text-text duration-300"
 							}
 						>
 							Outros
@@ -96,6 +109,11 @@ export const Sidebar = () => {
 						>
 							Sobre
 						</button>
+						<ThemeButton
+							className={
+								"h-[10vh] flex items-center text-3xl justify-center bg-accent hover:bg-accent-hover hover:drop-shadow-[0_0_2px_white] rounded-full p-2 text-text duration-300"
+							}
+						/>
 					</div>
 				</div>
 			</div>

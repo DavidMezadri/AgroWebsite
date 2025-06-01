@@ -1,14 +1,19 @@
 import "./styles.module.css";
 import { useNavigate } from "react-router-dom";
+import { ThemeButton } from "../../components";
 
 export const Register = () => {
 	const navigate = useNavigate();
 	return (
-		<div className="flex flex-col justify-center sm:h-screen p-4">
-			<div className="max-w-md w-full mx-auto border border-slate-300 rounded-2xl p-8">
+		<div className="flex flex-col justify-center sm:h-screen p-4 bg-[var(--gray-200)]">
+			<div className="bg-white-500 max-w-md w-full mx-auto border border-slate-300 rounded-2xl p-8 bg-white">
 				<div className="text-center mb-5">
 					<a href="login">
-						<img src="download.svg" alt="logo" className="w-20 inline-block" />
+						<img
+							src="download.svg"
+							alt="logo"
+							className="w-20 inline-block"
+						/>
 					</a>
 				</div>
 
@@ -90,19 +95,24 @@ export const Register = () => {
 							Criar uma conta
 						</button>
 					</div>
-					<p className="text-slate-800 text-sm mt-6 text-center">
-						Já possui cadastro?{" "}
-						<a
-							href="/login"
-							className="text-green-600 font-medium hover:underline ml-1"
-							onClick={(e) => {
-								e.preventDefault();
-								navigate("/login");
-							}}
-						>
-							Volte ao Login
-						</a>
-					</p>
+					<div className="relative w-full mt-6 pr-16">
+						<p className="text-slate-800 text-sm mt-6 text-center">
+							Já possui cadastro?{" "}
+							<a
+								href="/login"
+								className="text-green-600 font-medium hover:underline ml-1"
+								onClick={(e) => {
+									e.preventDefault();
+									navigate("/login");
+								}}
+							>
+								Volte ao Login
+							</a>
+						</p>
+						<div className="absolute right-0 top-1/2 -translate-y-1/2">
+							<ThemeButton />
+						</div>
+					</div>
 				</form>
 			</div>
 		</div>

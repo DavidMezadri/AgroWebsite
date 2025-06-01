@@ -23,10 +23,12 @@
     --color-success: #22c55e;
     --color-success-dark: #15803d;
 
-    --font-family-display: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --font-family-display: "Inter", "Segoe UI", Tahoma, Geneva, Verdana,
+        sans-serif;
 
     /* Fonte para labels e textos menores - mais neutra e clean */
-    --font-family-label: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --font-family-label: "Roboto", "Helvetica Neue", Helvetica, Arial,
+        sans-serif;
 
     --font-weight-bold: 700;
     --font-weight-medium: 500;
