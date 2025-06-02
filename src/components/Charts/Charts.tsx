@@ -1,4 +1,5 @@
 import "./styles.module.css";
+import "../../styles/theme.css";
 import { Bar, BarChart, XAxis, YAxis } from "recharts";
 
 import {
@@ -45,14 +46,14 @@ export function Charts({
 	);
 
 	return (
-		<Card>
+		<Card className="bg-[var(--gray-300)]">
 			<CardHeader>
 				<XIcon
 					onClick={onToggle}
-					className="relative -right-[98%] cursor-pointer"
+					className="relative -right-[98%] cursor-pointer text-[var(--text-default)]"
 				/>
-				<CardTitle>{title}</CardTitle>
-				<CardDescription>
+				<CardTitle className="text-[var(--text-default)]">{title}</CardTitle>
+				<CardDescription className="text-[var(--text-muted)]">
 					Default tooltip wiasdasdth ChartTooltipContent.
 				</CardDescription>
 			</CardHeader>
@@ -66,15 +67,17 @@ export function Charts({
 							interval={0}
 							className=" text-[8px] sm:text-sm"
 							tickLine={true}
-							tickMargin={1}
-							axisLine={true}
+							tickMargin={0}
+							axisLine={{ stroke: "var(--text-default)" }}
+							tick={{ stroke: "var(--text-default)" }}
 							tickFormatter={(_value, index) => elements[index]}
 						/>
 						<YAxis
 							dataKey=""
-							tickLine={true}
 							tickMargin={10}
-							axisLine={true}
+							axisLine={{ stroke: "var(--text-default)" }}
+							tick={{ stroke: "var(--text-default)" }}
+							className=" text-[8px] sm:text-sm fill-[var(--text-default)]"
 							tickFormatter={(_value, index) => {
 								if (index === undefined || index >= ticksArray.length)
 									return "";

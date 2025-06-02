@@ -62,9 +62,7 @@ export const Sidebar = () => {
 							Sobre
 						</button>
 						<div className="flex align-center justify-center">
-							<ThemeButton
-								className={`w-12 h-12 flex items-center justify-center rounded-full bg-[var(--button-color)] hover:bg-accent-hover hover:drop-shadow-[0_0_2px_white] cursor-pointer transition-all duration-300 align-center`}
-							/>
+							<ThemeButton className="w-12 h-12 flex items-center justify-center rounded-full bg-[var(--button-color)] hover:bg-accent-hover hover:drop-shadow-[0_0_2px_white] cursor-pointer transition-all duration-300 align-center" />
 						</div>
 					</div>
 				</div>
@@ -81,7 +79,7 @@ export const Sidebar = () => {
 				/>
 				<MenuIcon
 					fill="none"
-					className="absolute block lg:hidden hover:drop-shadow-[0_0_9px_white] cursor-pointer -right-11 top-5 w-9 h-9 border-text-muted text-text-muted"
+					className="absolute block lg:hidden hover:drop-shadow-[0_0_9px_white] cursor-pointer -right-11 top-5 w-9 h-9 border-text-muted text-[var(--text-default)]"
 					onClick={() => onClickClose(!onClickOpen)}
 				/>
 				<div className="absolute right-[50vw] top-20 translate-x-1/2">
@@ -119,9 +117,7 @@ export const Sidebar = () => {
 							Sobre
 						</button>
 						<div className="flex align-center justify-center">
-							<ThemeButton
-								className={`w-12 h-12 flex items-center justify-center rounded-full bg-[var(--button-color)] hover:bg-accent-hover hover:drop-shadow-[0_0_2px_white] cursor-pointer transition-all duration-300 align-center`}
-							/>
+							<ThemeButton className="w-12 h-12 flex items-center justify-center rounded-full bg-[var(--button-color)] hover:bg-accent-hover hover:drop-shadow-[0_0_2px_white] cursor-pointer transition-all duration-300 align-center" />
 						</div>
 					</div>
 				</div>

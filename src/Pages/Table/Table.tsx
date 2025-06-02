@@ -131,19 +131,21 @@ export const Table = () => {
 		<div>
 			<Sidebar />
 			{/* grafico */}
-			<div className="fixed left-1/2 -translate-x-1/2 translate-y-[5vh] bg-background">
-				<div className="lg:w-[60vw] w-[100vw] h-[80vh]">
-					<div className="rounded-lg shadow-xl">
-						<Charts
-							title={`Gráfico amostra ${idIndex}`}
-							chartConfig={chartConfig}
-							chartData={
-								chartData.dataLabelsInfo.find(
-									(item) => item.labelInfo.id.toString() === idIndex,
-								)?.dataInfoAnalysis ?? []
-							}
-							onToggle={() => setTableEye(!tableEye)}
-						/>
+			<div className="fixed bg-[var(--gray-100)] w-full h-full">
+				<div className="fixed left-1/2 -translate-x-1/2 translate-y-[5vh]">
+					<div className="lg:w-[60vw] w-[100vw] h-[80vh]">
+						<div className="rounded-lg shadow-xl">
+							<Charts
+								title={`Gráfico Amostra ${idIndex}`}
+								chartConfig={chartConfig}
+								chartData={
+									chartData.dataLabelsInfo.find(
+										(item) => item.labelInfo.id.toString() === idIndex,
+									)?.dataInfoAnalysis ?? []
+								}
+								onToggle={() => setTableEye(!tableEye)}
+							/>
+						</div>
 					</div>
 				</div>
 			</div>

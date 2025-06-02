@@ -37,30 +37,36 @@ export const TableAnalysis = (tableData: TableAnalysisProps) => {
 			</TableCaption>
 
 			<TableHeader>
-				<TableRow className="flex justify-between caption-top text-center">
+				<TableRow className="grid-cols-4">
 					{tableData.dataTableHeader.headLabels.map((i) => {
 						return (
-							<TableHead className="text-[var(--text-default)]" key={i}>
+							<TableHead
+								className="text-[var(--text-default)] text-center"
+								key={i}
+							>
 								{i}
 							</TableHead>
 						);
 					})}
-					<TableHead className="text-[var(--text-default)]">Ações</TableHead>
+					<TableHead className="text-[var(--text-default)] text-center">
+						Ações
+					</TableHead>
 				</TableRow>
 			</TableHeader>
 			<TableBody>
 				{tableData.dataLabelsInfo.map((i) => {
 					return (
-						<TableRow
-							key={i.labelInfo.id}
-							className="flex justify-between items-center "
-						>
-							<TableCell className="font-medium">{i.labelInfo.id}</TableCell>
-							<TableCell className="font-medium">{i.labelInfo.name}</TableCell>
-							<TableCell className="font-medium">
+						<TableRow key={i.labelInfo.id} className="grid-cols-4">
+							<TableCell className="font-medium text-center">
+								{i.labelInfo.id}
+							</TableCell>
+							<TableCell className="font-medium text-center">
+								{i.labelInfo.name}
+							</TableCell>
+							<TableCell className="font-medium text-center">
 								{i.labelInfo.date.toLocaleDateString()}
 							</TableCell>
-							<TableCell className="flex gap-3">
+							<TableCell className="flex gap-3 justify-center">
 								<EyeIcon
 									data-id={i.labelInfo.id}
 									className="cursor-pointer"

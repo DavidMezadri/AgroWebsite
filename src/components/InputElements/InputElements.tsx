@@ -25,9 +25,7 @@ export const InputElements: React.FC<InputElementsProps> = ({
 				placeholder={placeholder}
 				required
 				type={type}
-				onChange={(e) =>
-					handleClickUpdate(index, field, e.target.value)
-				}
+				onChange={(e) => handleClickUpdate(index, field, e.target.value)}
 				value={infos[index][field]}
 			/>
 		</div>
