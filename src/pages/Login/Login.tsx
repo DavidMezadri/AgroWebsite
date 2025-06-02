@@ -16,7 +16,7 @@ export const Login = () => {
 	const switchIcons = {
 		hidden: (
 			<EyeOffIcon
-				color="#9ca3af"
+				color="var(--text-default)"
 				className="w-4 h-4 absolute right-4 cursor-pointer"
 				onClick={() => {
 					SetIcon("show");
@@ -26,7 +26,7 @@ export const Login = () => {
 		),
 		show: (
 			<EyeIcon
-				color="#9ca3af"
+				color="var(--text-default)"
 				className="w-4 h-4 absolute right-4 cursor-pointer"
 				onClick={() => {
 					SetIcon("hidden");
@@ -41,9 +41,9 @@ export const Login = () => {
 			<div className="bg-[var(--gray-200)]">
 				<div className="min-h-screen flex flex-col items-center justify-center py-6 px-4 bg-[var(--gray-200)]">
 					<div className="max-w-md w-full">
-						<div className="p-8 rounded-2xl bg-white shadow">
+						<div className="p-8 rounded-2xl bg-[var(--gray-300)]">
 							<div className="flex justify-center items-center gap-6 mb-2">
-								<h1 className="text-5xl font-bold text-[var(--primary)] font-family-display text-center">
+								<h1 className="text-5xl font-bold text-[var(--text-default)] font-family-display text-center">
 									Login
 								</h1>
 								<a href="">
@@ -60,7 +60,7 @@ export const Login = () => {
 								<div>
 									<label
 										htmlFor="username"
-										className="text-slate-800 text-sm font-medium mb-2 block"
+										className="text-[var(--text-default)] text-sm font-medium mb-2 block"
 									>
 										Usuário
 									</label>
@@ -70,15 +70,13 @@ export const Login = () => {
 											name="username"
 											type="text"
 											required
-											className="w-full text-slate-800 text-sm border border-slate-300 px-4 py-3 rounded-md outline-green-600"
+											className="w-full text-[var(--text-default)] text-sm border border-[var(--text-default)] px-4 py-3 rounded-md outline-[var(--link-color)]"
 											placeholder="Digite o Usuário"
 										/>
 
 										<svg
 											xmlns="http://www.w3.org/2000/svg"
-											fill="#bbb"
-											stroke="#bbb"
-											className="w-4 h-4 absolute right-4"
+											className="w-4 h-4 absolute right-4 fill-[var(--text-default)]"
 											viewBox="0 0 24 24"
 										>
 											<circle cx="10" cy="7" r="6" data-original="#000000" />
@@ -95,7 +93,7 @@ export const Login = () => {
 								<div>
 									<label
 										htmlFor="password"
-										className="text-slate-800 text-sm font-medium mb-2 block"
+										className="text-[var(--text-default)] text-sm font-medium mb-2 block"
 									>
 										Senha
 									</label>
@@ -105,7 +103,7 @@ export const Login = () => {
 											name="password"
 											type={showPassword ? "text" : "password"}
 											required
-											className="w-full text-slate-800 text-sm border border-slate-300 px-4 py-3 rounded-md outline-green-600"
+											className="w-full text-[var(--text-default)] text-sm border border-[var(--text-default)] px-4 py-3 rounded-md outline-[var(--link-color)]"
 											placeholder="Digite a Senha"
 										/>
 										{switchIcons[icon]}
@@ -118,11 +116,11 @@ export const Login = () => {
 											id="remember-me"
 											name={showPassword ? "text" : "password"}
 											type="checkbox"
-											className="h-4 w-4 shrink-0 text-green-600 focus:ring-green-500 border-slate-300 rounded"
+											className="h-4 w-4 shrink-0 text-[var(--link-color)] focus:ring-[var(--link-color)] border-slate-300 rounded"
 										/>
 										<label
 											htmlFor="remember-me"
-											className="ml-3 block text-sm text-slate-800"
+											className="ml-3 block text-sm text-[var(--text-default)]"
 										>
 											Lembrar Usuário
 										</label>
@@ -130,7 +128,7 @@ export const Login = () => {
 									<div className="text-sm">
 										<a
 											href="jajvascript:void(0);"
-											className="text-green-600 hover:underline font-semibold"
+											className="text-[var(--link-color)] hover:underline font-semibold"
 										>
 											Esqueceu sua senha?
 										</a>
@@ -140,17 +138,17 @@ export const Login = () => {
 								<div className="!mt-12">
 									<button
 										type="button"
-										className="w-full py-2 px-4 text-[15px] font-medium tracking-wide rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none cursor-pointer"
+										className="w-full py-2 px-4 text-[15px] font-medium tracking-wide rounded-md text-[var(--text-default)] bg-[var(--link-color)] hover:bg-[var(--link-hover)] focus:outline-none cursor-pointer"
 									>
 										Logar
 									</button>
 								</div>
 								<div className="relative w-full mt-6 pr-16">
-									<p className="text-slate-800 text-sm !mt-6 text-center">
+									<p className="text-[var(--text-default)] text-sm !mt-6 text-center">
 										Não possui uma conta?{" "}
 										<a
 											href="www"
-											className="text-green-600 hover:underline ml-1 whitespace-nowrap font-semibold"
+											className="text-[var(--link-color)] hover:underline ml-1 whitespace-nowrap font-semibold"
 											onClick={(e) => {
 												e.preventDefault();
 												navigate("/register");

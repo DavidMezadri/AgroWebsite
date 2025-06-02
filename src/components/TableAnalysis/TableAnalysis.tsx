@@ -1,4 +1,5 @@
 import { EyeIcon, PenIcon } from "lucide-react";
+import type { ChartDataItem } from "../Charts/Charts";
 import {
 	Table,
 	TableBody,
@@ -9,58 +10,59 @@ import {
 	TableRow,
 } from "../ui/table";
 
+export type DataLabelInfo = { id: number; name: string; date: Date };
+
 export type TableDataProps = {
 	title: string;
 	headLabels: string[];
-	data: { id: number; name: string; date: Date }[];
 };
 
-type TableAnalysisProps = TableDataProps & {
-	onToggle: () => void;
+export type TableAllData = {
+	dataTableHeader: TableDataProps;
+	dataLabelsInfo: {
+		labelInfo: DataLabelInfo;
+		dataInfoAnalysis: ChartDataItem[];
+	}[];
+};
+
+type TableAnalysisProps = TableAllData & {
+	onToggle: (e: React.MouseEvent<SVGSVGElement>) => void;
 };
 
 export const TableAnalysis = (tableData: TableAnalysisProps) => {
 	return (
 		<Table>
 			<TableCaption className="caption-top text-2xl font-bold text-[var(--text-default)]">
-				{tableData.title}
+				{tableData.dataTableHeader.title}
 			</TableCaption>
 
 			<TableHeader>
 				<TableRow className="flex justify-between caption-top text-center">
-					{tableData.headLabels.map((i) => {
+					{tableData.dataTableHeader.headLabels.map((i) => {
 						return (
-							<TableHead
-								className="text-[var(--text-default)]"
-								key={i}
-							>
+							<TableHead className="text-[var(--text-default)]" key={i}>
 								{i}
 							</TableHead>
 						);
 					})}
-					<TableHead className="text-[var(--text-default)]">
-						Ações
-					</TableHead>
+					<TableHead className="text-[var(--text-default)]">Ações</TableHead>
 				</TableRow>
 			</TableHeader>
 			<TableBody>
-				{tableData.data.map((i) => {
+				{tableData.dataLabelsInfo.map((i) => {
 					return (
 						<TableRow
-							key={i.id}
+							key={i.labelInfo.id}
 							className="flex justify-between items-center "
 						>
+							<TableCell className="font-medium">{i.labelInfo.id}</TableCell>
+							<TableCell className="font-medium">{i.labelInfo.name}</TableCell>
 							<TableCell className="font-medium">
-								{i.id}
-							</TableCell>
-							<TableCell className="font-medium">
-								{i.name}
-							</TableCell>
-							<TableCell className="font-medium">
-								{i.date.toLocaleDateString()}
+								{i.labelInfo.date.toLocaleDateString()}
 							</TableCell>
 							<TableCell className="flex gap-3">
 								<EyeIcon
+									data-id={i.labelInfo.id}
 									className="cursor-pointer"
 									onClick={tableData.onToggle}
 								/>

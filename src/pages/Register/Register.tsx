@@ -6,9 +6,9 @@ export const Register = () => {
 	const navigate = useNavigate();
 	return (
 		<div className="flex flex-col justify-center sm:h-screen p-4 bg-[var(--gray-200)]">
-			<div className="bg-white-500 max-w-md w-full mx-auto border border-slate-300 rounded-2xl p-8 bg-white">
+			<div className="bg-white-500 max-w-md w-full mx-auto  rounded-2xl p-8 bg-[var(--gray-300)]">
 				<div className="flex justify-center items-center gap-6 mb-2">
-					<h1 className="text-5xl font-bold text-[var(--primary)] font-family-display text-center">
+					<h1 className="text-5xl font-bold text-[var(--text-default)] font-family-display text-center">
 						Registro
 					</h1>
 					<a href="login">
@@ -24,7 +24,7 @@ export const Register = () => {
 						<div>
 							<label
 								htmlFor="email"
-								className="text-slate-800 text-sm font-medium mb-2 block"
+								className="text-[var(--text-default)] text-sm font-medium mb-2 block"
 							>
 								Email
 							</label>
@@ -32,14 +32,14 @@ export const Register = () => {
 								id="email"
 								name="email"
 								type="text"
-								className="text-slate-800 bg-white border border-slate-300 w-full text-sm px-4 py-3 rounded-md outline-green-500"
+								className="text-[var(--text-default)] bg-[var(--gray-300)] border border-[var(--text-default)] w-full text-sm px-4 py-3 rounded-md outline-green-500"
 								placeholder="Digite o email"
 							/>
 						</div>
 						<div>
 							<label
 								htmlFor="password"
-								className="text-slate-800 text-sm font-medium mb-2 block"
+								className="text-[var(--text-default)] text-sm font-medium mb-2 block"
 							>
 								Senha
 							</label>
@@ -47,14 +47,14 @@ export const Register = () => {
 								id="password"
 								name="password"
 								type="password"
-								className="text-slate-800 bg-white border border-slate-300 w-full text-sm px-4 py-3 rounded-md outline-green-500"
+								className="text-[var(--text-default)] bg-[var(--gray-300)] border border-[var(--text-default)] w-full text-sm px-4 py-3 rounded-md outline-green-500"
 								placeholder="Digite a senha"
 							/>
 						</div>
 						<div>
 							<label
 								htmlFor="cpassword"
-								className="text-slate-800 text-sm font-medium mb-2 block"
+								className="text-[var(--text-default)] text-sm font-medium mb-2 block"
 							>
 								Confirmação da Senha
 							</label>
@@ -62,7 +62,7 @@ export const Register = () => {
 								id="cpassword"
 								name="cpassword"
 								type="password"
-								className="text-slate-800 bg-white border border-slate-300 w-full text-sm px-4 py-3 rounded-md outline-green-500"
+								className="text-[var(--text-default)] bg-[var(--gray-300)] border border-[var(--text-default)] w-full text-sm px-4 py-3 rounded-md outline-green-500"
 								placeholder="Digite a confirmação da senha"
 							/>
 						</div>
@@ -72,16 +72,16 @@ export const Register = () => {
 								id="remember-me"
 								name="remember-me"
 								type="checkbox"
-								className="h-4 w-4 shrink-0 text-green-600 focus:ring-green-500 border-slate-300 rounded"
+								className="h-4 w-4 shrink-0 text-[var(--link-color)] focus:ring-green-500 border-slate-300 rounded"
 							/>
 							<label
 								htmlFor="remember-me"
-								className="text-slate-800 ml-3 block text-sm"
+								className="text-[var(--text-default)] ml-3 block text-sm"
 							>
 								Eu aceito os{" "}
 								<a
 									href="/termoscontrato"
-									className="text-green-600 font-medium hover:underline ml-1"
+									className="text-[var(--link-color)] font-medium hover:underline ml-1"
 								>
 									Termos e Condições
 								</a>
@@ -92,17 +92,17 @@ export const Register = () => {
 					<div className="mt-12">
 						<button
 							type="button"
-							className="w-full py-3 px-4 text-sm tracking-wider font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none cursor-pointer"
+							className="w-full py-3 px-4 text-sm tracking-wider font-medium rounded-md text-[var(--text-default)] bg-[var(--link-color)] hover:bg-[var(--link-hover)] focus:outline-none cursor-pointer"
 						>
 							Criar uma conta
 						</button>
 					</div>
 					<div className="relative w-full mt-6 pr-16">
-						<p className="text-slate-800 text-sm mt-6 text-center">
+						<p className="text-[var(--text-default)] text-sm mt-6 text-center">
 							Já possui cadastro?{" "}
 							<a
 								href="/login"
-								className="text-green-600 font-medium hover:underline ml-1"
+								className="text-[var(--link-color)] font-medium hover:underline ml-1"
 								onClick={(e) => {
 									e.preventDefault();
 									navigate("/login");

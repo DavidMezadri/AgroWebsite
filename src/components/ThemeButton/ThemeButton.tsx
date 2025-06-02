@@ -14,7 +14,7 @@ export const ThemeButton = ({ className = "", ...props }: ThemeButtonProps) => {
 	});
 
 	const handleThemeEvent = (
-		event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+		event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
 	) => {
 		event.preventDefault();
 
@@ -38,7 +38,7 @@ export const ThemeButton = ({ className = "", ...props }: ThemeButtonProps) => {
 	return (
 		<button
 			onClick={handleThemeEvent}
-			className={`bg-[var(--button-color)] rounded hover:bg-[var(--link-hover)] b-1 p-1 transition hover:cursor-pointer ${className}`}
+			className={`bg-[var(--link-color)] rounded hover:bg-[var(--link-hover)] b-1 p-1 transition hover:cursor-pointer ${className}`}
 			{...props}
 		>
 			{theme === "dark" ? <SunIcon size={30} /> : <MoonIcon size={30} />}

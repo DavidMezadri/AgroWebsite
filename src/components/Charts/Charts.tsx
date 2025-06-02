@@ -30,15 +30,13 @@ export function Charts({
 	title,
 }: {
 	chartConfig: ChartConfig;
-	chartData: ChartDataItem[][];
+	chartData: ChartDataItem[];
 	onToggle: () => void;
 	title: string;
 }) {
-	const elements = chartData.map((item) => item[0].element);
+	const elements = chartData.map((item) => item.element);
 
-	const max = Math.max(
-		...chartData.map((item) => item[0].current + item[0].missing),
-	);
+	const max = Math.max(...chartData.map((item) => item.current + item.missing));
 
 	const steps = 15;
 	const ticksArray = Array.from(
@@ -60,7 +58,7 @@ export function Charts({
 			</CardHeader>
 			<CardContent>
 				<ChartContainer config={chartConfig}>
-					<BarChart accessibilityLayer data={chartData[0]}>
+					<BarChart accessibilityLayer data={chartData}>
 						<XAxis
 							dataKey="Nutriente"
 							angle={-45}
