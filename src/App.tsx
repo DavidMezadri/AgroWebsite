@@ -5,10 +5,22 @@ export const App = () => {
 	return (
 		<Router>
 			<Routes>
-				<Route path="/login" element={<Login />} />
-				<Route path="/register" element={<Register />} />
-				<Route path="/analysis" element={<Analysis />} />
-				<Route path="/table" element={<Table />} />
+				<Route
+					path="/login"
+					element={<Login />}
+				/>
+				<Route
+					path="/register"
+					element={<Register />}
+				/>
+				<Route
+					path="/analysis"
+					element={<Analysis />}
+				/>
+				<Route
+					path="/table"
+					element={<Table />}
+				/>
 			</Routes>
 		</Router>
 	);

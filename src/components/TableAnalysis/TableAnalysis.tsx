@@ -1,4 +1,5 @@
 import { EyeIcon, PenIcon } from "lucide-react";
+import type { ChartDataItem } from "../Charts/Charts";
 import {
 	Table,
 	TableBody,
@@ -9,58 +10,82 @@ import {
 	TableRow,
 } from "../ui/table";
 
+export type DataLabelInfo = {
+	[key: string]: string | number | Date;
+};
+
 export type TableDataProps = {
 	title: string;
 	headLabels: string[];
-	data: { id: number; name: string; date: Date }[];
 };
 
-type TableAnalysisProps = TableDataProps & {
-	onToggle: () => void;
+export type TableAllData = {
+	dataTableHeader: TableDataProps;
+	dataLabelsInfo: {
+		labelInfo: DataLabelInfo;
+		dataInfoAnalysis: ChartDataItem[];
+	}[];
+};
+
+type TableAnalysisProps = TableAllData & {
+	onToggle: (e: React.MouseEvent<SVGSVGElement>) => void;
 };
 
 export const TableAnalysis = (tableData: TableAnalysisProps) => {
 	return (
 		<Table>
 			<TableCaption className="caption-top text-2xl font-bold text-[var(--text-default)]">
-				{tableData.title}
+				{tableData.dataTableHeader.title}
 			</TableCaption>
 
 			<TableHeader>
-				<TableRow className="flex justify-between caption-top text-center">
-					{tableData.headLabels.map((i) => {
+				<TableRow
+					className={`grid-cols-${
+						Object.keys(tableData.dataTableHeader.headLabels)
+							.length + 1
+					}`}
+				>
+					{tableData.dataTableHeader.headLabels.map((i) => {
 						return (
 							<TableHead
-								className="text-[var(--text-default)]"
+								className="text-[var(--text-default)] text-center"
 								key={i}
 							>
 								{i}
 							</TableHead>
 						);
 					})}
-					<TableHead className="text-[var(--text-default)]">
+					<TableHead className="text-[var(--text-default)] text-center">
 						Ações
 					</TableHead>
 				</TableRow>
 			</TableHeader>
 			<TableBody>
-				{tableData.data.map((i) => {
+				{tableData.dataLabelsInfo.map((i) => {
 					return (
 						<TableRow
-							key={i.id}
-							className="flex justify-between items-center "
+							key={i.labelInfo.id.toString()}
+							className={`grid-cols-${
+								Object.keys(
+									tableData.dataTableHeader.headLabels
+								).length + 1
+							}`}
 						>
-							<TableCell className="font-medium">
-								{i.id}
-							</TableCell>
-							<TableCell className="font-medium">
-								{i.name}
-							</TableCell>
-							<TableCell className="font-medium">
-								{i.date.toLocaleDateString()}
-							</TableCell>
-							<TableCell className="flex gap-3">
+							{Object.values(i.labelInfo).map((labelsValue) => (
+								<TableCell
+									key={i.labelInfo.id.toString()}
+									className="font-medium text-center"
+								>
+									{labelsValue instanceof Date
+										? labelsValue.toLocaleDateString(
+												"pt-BR"
+										  )
+										: labelsValue?.toString()}
+								</TableCell>
+							))}
+							<TableCell className="flex gap-3 justify-center">
 								<EyeIcon
+									data-id={i.labelInfo.id}
 									className="cursor-pointer"
 									onClick={tableData.onToggle}
 								/>
