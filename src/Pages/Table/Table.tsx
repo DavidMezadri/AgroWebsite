@@ -136,7 +136,7 @@ export const Table = () => {
 					<div className="lg:w-[60vw] w-[100vw] h-[80vh]">
 						<div className="rounded-lg shadow-xl">
 							<Charts
-								title={`Gráfico Amostra ${idIndex}`}
+								title={idIndex}
 								chartConfig={chartConfig}
 								chartData={
 									chartData.dataLabelsInfo.find(

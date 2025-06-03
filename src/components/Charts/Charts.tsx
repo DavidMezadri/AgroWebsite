@@ -52,9 +52,13 @@ export function Charts({
 					onClick={onToggle}
 					className="relative -right-[98%] cursor-pointer text-[var(--text-default)]"
 				/>
-				<CardTitle className="text-[var(--text-default)]">{title}</CardTitle>
+				<CardTitle className="text-[var(--text-default)]">
+					{" "}
+					ID Amostra: {title}
+				</CardTitle>
 				<CardDescription className="text-[var(--text-muted)]">
-					Default tooltip wiasdasdth ChartTooltipContent.
+					Gráfico mostra quatidade de nutriente presente e faltantes da Amostra:{" "}
+					{title}
 				</CardDescription>
 			</CardHeader>
 			<CardContent>

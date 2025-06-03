@@ -10,7 +10,9 @@ import {
 	TableRow,
 } from "../ui/table";
 
-export type DataLabelInfo = { id: number; name: string; date: Date };
+export type DataLabelInfo = {
+	[key: string]: string | number | Date;
+};
 
 export type TableDataProps = {
 	title: string;
@@ -37,7 +39,9 @@ export const TableAnalysis = (tableData: TableAnalysisProps) => {
 			</TableCaption>
 
 			<TableHeader>
-				<TableRow className="grid-cols-4">
+				<TableRow
+					className={`grid-cols-${Object.keys(tableData.dataTableHeader.headLabels).length + 1}`}
+				>
 					{tableData.dataTableHeader.headLabels.map((i) => {
 						return (
 							<TableHead
@@ -56,16 +60,20 @@ export const TableAnalysis = (tableData: TableAnalysisProps) => {
 			<TableBody>
 				{tableData.dataLabelsInfo.map((i) => {
 					return (
-						<TableRow key={i.labelInfo.id} className="grid-cols-4">
-							<TableCell className="font-medium text-center">
-								{i.labelInfo.id}
-							</TableCell>
-							<TableCell className="font-medium text-center">
-								{i.labelInfo.name}
-							</TableCell>
-							<TableCell className="font-medium text-center">
-								{i.labelInfo.date.toLocaleDateString()}
-							</TableCell>
+						<TableRow
+							key={i.labelInfo.id.toString()}
+							className={`grid-cols-${Object.keys(tableData.dataTableHeader.headLabels).length + 1}`}
+						>
+							{Object.values(i.labelInfo).map((labelsValue) => (
+								<TableCell
+									key={i.labelInfo.id.toString()}
+									className="font-medium text-center"
+								>
+									{labelsValue instanceof Date
+										? labelsValue.toLocaleDateString("pt-BR")
+										: labelsValue?.toString()}
+								</TableCell>
+							))}
 							<TableCell className="flex gap-3 justify-center">
 								<EyeIcon
 									data-id={i.labelInfo.id}
