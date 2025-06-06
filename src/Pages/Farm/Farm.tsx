@@ -77,7 +77,7 @@ export const Farm = () => {
 			<div className="fixed bg-[var(--gray-100)] w-full h-full">
 				<div className="fixed left-1/2 -translate-x-1/2 translate-y-[5vh]">
 					<div className="lg:w-[60vw] w-[100vw] h-[80vh]">
-						<div className="rounded-lg shadow-xl">
+						<div className="rounded-lg shadow-xl border-1 border-border">
 							<TableIputFarmer
 								dataFarm={
 									dataTableFarm.dataLabelsInfo.find(

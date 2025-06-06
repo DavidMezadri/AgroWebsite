@@ -1,4 +1,5 @@
 import { X } from "lucide-react";
+import { useState } from "react";
 import { ButtonPattern } from "../ButtonPattern/ButtonPattern";
 import type { DataLabelInfo } from "../TableAnalysis/TableAnalysis";
 import {
@@ -17,9 +18,12 @@ type Props = {
 };
 
 export const TableIputFarmer = ({ dataFarm, onToggle }: Props) => {
+	const [dataFarmInput, setDataFarm] = useState(dataFarm);
 	return (
 		<Table>
 			<TableHeader>
+				{" "}
+				{/* Retirar esse table header e o jsx esta renderizando duas vezes */}
 				<TableCaption className="w-full flex justify-between items-center p-3 text-3xl text-[var(--text-default)]">
 					Tabela de dados da Fazenda
 					<X className="cursor-pointer" onClick={onToggle} />
@@ -45,33 +49,30 @@ export const TableIputFarmer = ({ dataFarm, onToggle }: Props) => {
 				</TableRow>
 			</TableHeader>
 			<TableBody>
-				<TableRow className="grid grid-cols-5">
+				<TableRow className="grid grid-cols-[minmax(180px,_1fr)_minmax(180px,_1fr)_minmax(180px,_1fr)_minmax(180px,_1fr)_minmax(180px,_1fr)]">
 					<TableCell className="flex justify-self-center">
 						<input
-							value={dataFarm?.id.toString() ?? ""}
-							className="text-sm border border-[var(--text-default)] placeholder:text-xs placeholder-[var(--text-default)] text-[var(--text-default)] px-3 py-2 rounded-md outline-green-600 min-w-40 max-w-40"
+							onChange={(e) =>
+								setDataFarm((prev) => ({ ...prev, name: e.target.value }))
+							}
+							value={dataFarm?.name.toString() ?? ""}
+							className="overflow-hidden text-sm border border-[var(--text-default)] placeholder:text-xs placeholder-[var(--text-default)] text-[var(--text-default)] px-3 py-2 rounded-md outline-green-600 max-w-40"
 						/>
 					</TableCell>
 					<TableCell className="flex justify-self-center">
 						<input
+							onChange={(e) =>
+								setDataFarm((prev) => ({ ...prev, farmer: e.target.value }))
+							}
 							value={dataFarm?.farmer.toString() ?? ""}
 							className="text-sm border border-[var(--text-default)] placeholder:text-xs placeholder-[var(--text-default)] text-[var(--text-default)] px-3 py-2 rounded-md outline-green-600 min-w-30 max-w-30"
 						/>
 					</TableCell>
 					<TableCell className="flex justify-self-center">
 						<input
-							value={dataFarm?.localize.toString() ?? ""}
-							className="text-sm border border-[var(--text-default)] placeholder:text-xs placeholder-[var(--text-default)] text-[var(--text-default)] px-3 py-2 rounded-md outline-green-600 min-w-30 max-w-30"
-						/>
-					</TableCell>
-					<TableCell className="flex justify-self-center">
-						<input
-							value={dataFarm?.area.toString() ?? ""}
-							className="flex-1 text-sm border border-[var(--text-default)] placeholder:text-xs placeholder-[var(--text-default)] text-[var(--text-default)] px-3 py-2 rounded-md outline-green-600 min-w-30 max-w-30"
-						/>
-					</TableCell>
-					<TableCell className="flex justify-self-center">
-						<input
+							onChange={(e) =>
+								setDataFarm((prev) => ({ ...prev, date: e.target.value }))
+							}
 							value={
 								dataFarm?.date instanceof Date
 									? dataFarm.date.toISOString().split("T")[0]
@@ -81,11 +82,29 @@ export const TableIputFarmer = ({ dataFarm, onToggle }: Props) => {
 							className="text-sm border border-[var(--text-default)] placeholder:text-xs placeholder-[var(--text-default)] text-[var(--text-default)] px-3 py-2 rounded-md outline-green-600 min-w-40 max-w-40"
 						/>
 					</TableCell>
+					<TableCell className="flex justify-self-center">
+						<input
+							onChange={(e) =>
+								setDataFarm((prev) => ({ ...prev, localize: e.target.value }))
+							}
+							value={dataFarm?.localize.toString() ?? ""}
+							className="text-sm border border-[var(--text-default)] placeholder:text-xs placeholder-[var(--text-default)] text-[var(--text-default)] px-3 py-2 rounded-md outline-green-600 min-w-30 max-w-30"
+						/>
+					</TableCell>
+					<TableCell className="flex justify-self-center">
+						<input
+							onChange={(e) =>
+								setDataFarm((prev) => ({ ...prev, area: e.target.value }))
+							}
+							value={dataFarm?.area.toString() ?? ""}
+							className="flex text-sm border border-[var(--text-default)] placeholder:text-xs placeholder-[var(--text-default)] text-[var(--text-default)] px-3 py-2 rounded-md outline-green-600 min-w-30 max-w-30"
+						/>
+					</TableCell>
 				</TableRow>
+				<TableCell className="flex justify-self-center">
+					<ButtonPattern type={"button"} value={"Editar"} />
+				</TableCell>
 			</TableBody>
-			<TableCell className="flex justify-self-center">
-				<ButtonPattern type={"button"} value={"Editar"} />
-			</TableCell>
 		</Table>
 	);
 };
