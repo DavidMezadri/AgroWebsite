@@ -1,4 +1,4 @@
-import { EyeIcon, PenIcon } from "lucide-react";
+import { CirclePlusIcon, PenIcon } from "lucide-react";
 import type { ChartDataItem } from "../Charts/Charts";
 import {
 	Table,
@@ -64,9 +64,9 @@ export const TableAnalysis = (tableData: TableAnalysisProps) => {
 							key={i.labelInfo.id.toString()}
 							className={`grid-cols-${Object.keys(tableData.dataTableHeader.headLabels).length + 1}`}
 						>
-							{Object.values(i.labelInfo).map((labelsValue) => (
+							{Object.values(i.labelInfo).map((labelsValue, index) => (
 								<TableCell
-									key={i.labelInfo.id.toString()}
+									key={`${i.labelInfo.id}-${index}`}
 									className="font-medium text-center"
 								>
 									{labelsValue instanceof Date
@@ -75,12 +75,15 @@ export const TableAnalysis = (tableData: TableAnalysisProps) => {
 								</TableCell>
 							))}
 							<TableCell className="flex gap-3 justify-center">
-								<EyeIcon
+								<PenIcon
 									data-id={i.labelInfo.id}
 									className="cursor-pointer"
 									onClick={tableData.onToggle}
 								/>
-								<PenIcon className="cursor-pointer" />
+								<CirclePlusIcon
+									className="cursor-pointer"
+									onClick={tableData.onToggle}
+								/>
 							</TableCell>
 						</TableRow>
 					);

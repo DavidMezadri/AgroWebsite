@@ -9,16 +9,57 @@ import {
 const dataTableFarm: TableAllData = {
 	dataTableHeader: {
 		title: "Fazedas Cadastradas",
-		headLabels: ["ID", "Nome da Fazenda", "Propietario", "Data", "Localização"],
+		headLabels: [
+			"ID",
+			"Nome da Fazenda",
+			"Propietario",
+			"Data",
+			"Área",
+			"Localização",
+		],
 	},
 	dataLabelsInfo: [
 		{
 			labelInfo: {
-				id: 1,
+				id: "1",
 				name: "Amostra 1",
 				farmer: "Joãozinho",
 				date: new Date("2008-02-01"),
-				Localize: "Chapecó",
+				area: "25",
+				localize: "Chapecó",
+			},
+			dataInfoAnalysis: [{ element: "pH", current: 450, missing: 300 }],
+		},
+		{
+			labelInfo: {
+				id: "2",
+				name: "Amostra 1",
+				farmer: "Joãozinho",
+				date: new Date("2008-02-01"),
+				area: "2",
+				localize: "Chapecó",
+			},
+			dataInfoAnalysis: [{ element: "pH", current: 450, missing: 300 }],
+		},
+		{
+			labelInfo: {
+				id: "3",
+				name: "Amostra 1",
+				farmer: "Joãozinho",
+				date: new Date("2008-02-01"),
+				area: "3",
+				localize: "Chapecó",
+			},
+			dataInfoAnalysis: [{ element: "pH", current: 450, missing: 300 }],
+		},
+		{
+			labelInfo: {
+				id: "8",
+				name: "Amostra 1",
+				farmer: "Joãozinho",
+				date: new Date("2008-02-01"),
+				area: "8",
+				localize: "Chapecó",
 			},
 			dataInfoAnalysis: [{ element: "pH", current: 450, missing: 300 }],
 		},
@@ -27,7 +68,8 @@ const dataTableFarm: TableAllData = {
 
 export const Farm = () => {
 	const [tableEye, setTableEye] = useState(true);
-	const [idIndex, setidIndex] = useState("0");
+	const [idIndex, setidIndex] = useState("");
+
 	return (
 		<div>
 			<Sidebar />
@@ -36,7 +78,16 @@ export const Farm = () => {
 				<div className="fixed left-1/2 -translate-x-1/2 translate-y-[5vh]">
 					<div className="lg:w-[60vw] w-[100vw] h-[80vh]">
 						<div className="rounded-lg shadow-xl">
-							<TableIputFarmer />
+							<TableIputFarmer
+								dataFarm={
+									dataTableFarm.dataLabelsInfo.find(
+										(item) => item.labelInfo.id === idIndex,
+									)?.labelInfo
+								}
+								onToggle={() => {
+									setTableEye((prev) => !prev);
+								}}
+							/>
 						</div>
 					</div>
 				</div>
