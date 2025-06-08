@@ -20,8 +20,8 @@ import {
 
 export type ChartDataItem = {
 	element: string;
-	current: number;
-	missing: number;
+	current: string;
+	missing: string;
 };
 
 export function Charts({
@@ -37,7 +37,9 @@ export function Charts({
 }) {
 	const elements = chartData.map((item) => item.element);
 
-	const max = Math.max(...chartData.map((item) => item.current + item.missing));
+	const max = Math.max(
+		...chartData.map((item) => Number(item.current) + Number(item.missing)),
+	);
 
 	const steps = 15;
 	const ticksArray = Array.from(

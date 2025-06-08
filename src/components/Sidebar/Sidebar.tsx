@@ -27,7 +27,7 @@ export const Sidebar = () => {
 					}}
 				/>
 				<div className="absolute right-0 top-30">
-					<div className="flex h-[80vh] flex-col justify-between w-30 text-[var(--text-default)] text-[var(--text-default)]">
+					<div className="flex h-[80vh] flex-col justify-between w-30 text-[var(--text-default)]">
 						{" "}
 						<button
 							type="button"

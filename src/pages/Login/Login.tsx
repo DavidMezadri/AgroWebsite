@@ -46,7 +46,7 @@ export const Login = () => {
 								<h1 className="text-5xl font-bold text-[var(--text-default)] font-family-display text-center">
 									Login
 								</h1>
-								<a href="">
+								<a href="/login">
 									{
 										<img
 											src="./download.svg"

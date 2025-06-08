@@ -1,5 +1,7 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
+	ButtonPattern,
 	Sidebar,
 	type TableAllData,
 	TableAnalysis,
@@ -28,7 +30,7 @@ const dataTableFarm: TableAllData = {
 				area: "25",
 				localize: "Chapecó",
 			},
-			dataInfoAnalysis: [{ element: "pH", current: 450, missing: 300 }],
+			dataInfoAnalysis: [{ element: "pH", current: "450", missing: "300" }],
 		},
 		{
 			labelInfo: {
@@ -39,7 +41,7 @@ const dataTableFarm: TableAllData = {
 				area: "2",
 				localize: "Chapecó",
 			},
-			dataInfoAnalysis: [{ element: "pH", current: 450, missing: 300 }],
+			dataInfoAnalysis: [{ element: "pH", current: "450", missing: "300" }],
 		},
 		{
 			labelInfo: {
@@ -50,7 +52,7 @@ const dataTableFarm: TableAllData = {
 				area: "3",
 				localize: "Chapecó",
 			},
-			dataInfoAnalysis: [{ element: "pH", current: 450, missing: 300 }],
+			dataInfoAnalysis: [{ element: "pH", current: "450", missing: "300" }],
 		},
 		{
 			labelInfo: {
@@ -61,7 +63,7 @@ const dataTableFarm: TableAllData = {
 				area: "8",
 				localize: "Chapecó",
 			},
-			dataInfoAnalysis: [{ element: "pH", current: 450, missing: 300 }],
+			dataInfoAnalysis: [{ element: "pH", current: "450", missing: "300" }],
 		},
 	],
 };
@@ -69,15 +71,16 @@ const dataTableFarm: TableAllData = {
 export const Farm = () => {
 	const [tableEye, setTableEye] = useState(true);
 	const [idIndex, setidIndex] = useState("");
+	const navigate = useNavigate();
 
 	return (
 		<div>
 			<Sidebar />
 
 			<div className="fixed bg-[var(--gray-100)] w-full h-full">
-				<div className="fixed left-1/2 -translate-x-1/2 translate-y-[5vh]">
+				<div className="fixed left-1/2 -translate-x-1/2 translate-y-[5vh]  ">
 					<div className="lg:w-[60vw] w-[100vw] h-[80vh]">
-						<div className="rounded-lg shadow-xl border-1 border-border">
+						<div className="rounded-lg shadow-xl border-1 border-border bg-[var(--gray-300)]">
 							<TableIputFarmer
 								dataFarm={
 									dataTableFarm.dataLabelsInfo.find(
@@ -88,6 +91,14 @@ export const Farm = () => {
 									setTableEye((prev) => !prev);
 								}}
 							/>
+						</div>
+						<div className="flex justify-between pe-14 pl-14">
+							<div>
+								<ButtonPattern type={"button"} value={"Salvar"} />
+							</div>
+							<div>
+								<ButtonPattern type={"button"} value={"Excluir"} />
+							</div>
 						</div>
 					</div>
 				</div>
@@ -107,10 +118,21 @@ export const Farm = () => {
 									headLabels: dataTableFarm.dataTableHeader.headLabels,
 								}}
 								dataLabelsInfo={dataTableFarm.dataLabelsInfo}
-								onToggle={(e: React.MouseEvent<SVGSVGElement>): void => {
+								onTogglePenIcon={(e: React.MouseEvent<SVGSVGElement>): void => {
 									setTableEye((prev) => !prev);
 									setidIndex(e.currentTarget.getAttribute("data-id") ?? "");
 								}}
+								onToggleFilePenLineIcon={(
+									e: React.MouseEvent<SVGSVGElement>,
+								): void => {
+									navigate("/table", {
+										state: {
+											id: e.currentTarget.getAttribute("data-id") ?? "",
+										},
+									});
+								}}
+								classNameCirclePlusIcon="hidden"
+								classNameChartColumnStackedIcon="hidden"
 							/>
 						</div>
 					</div>

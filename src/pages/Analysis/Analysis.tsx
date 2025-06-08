@@ -1,7 +1,13 @@
 import "./style.module.css";
 import "../../styles/theme.css";
 import { useState } from "react";
-import { ButtonPattern, InputElements, Sidebar } from "../../components/index";
+import { useLocation } from "react-router-dom";
+import {
+	ButtonPattern,
+	type ChartDataItem,
+	InputElements,
+	Sidebar,
+} from "../../components/index";
 
 const labelClassNormal = "text-center font-semibold min-w-20 max-w-20";
 
@@ -28,16 +34,59 @@ const labels = [
 	"CTC",
 	"V%",
 	"H+Al",
-] as const;
-type FormLabel = (typeof labels)[number];
-type FormTemplate = { [key in FormLabel]: string };
+];
+
+type FormTemplate = {
+	ID: "";
+	Nome: "";
+	Data: "";
+	pH: "";
+	MO: "";
+	CO: "";
+	P: "";
+	K: "";
+	Ca: "";
+	Mg: "";
+	S: "";
+	B: "";
+	Zn: "";
+	Cu: "";
+	Mn: "";
+	Fe: "";
+	Al: "";
+	CTC: "";
+	"V%": "";
+	"H+Al": "";
+};
 
 export const Analysis = () => {
+	const location = useLocation();
+
 	const formTemplate: FormTemplate = Object.fromEntries(
 		labels.map((label) => [label, ""]),
 	) as FormTemplate;
 
 	const [infos, setInfos] = useState([formTemplate]);
+
+	useState(() => {
+		const valueCurrents =
+			location.state?.data.dataInfoAnalysis?.map(
+				(item: ChartDataItem) => item.current,
+			) ?? [];
+
+		const labelInfo = [
+			location.state?.data.labelInfo.id,
+			location.state?.data.labelInfo.name,
+			location.state?.data.labelInfo.date.toISOString().split("T")[0],
+			...valueCurrents,
+		];
+
+		const labelsAndCurrentsValues: FormTemplate = Object.fromEntries(
+			labels.map((label, index) => [label, labelInfo[index] || ""]),
+		) as FormTemplate;
+
+		setInfos([labelsAndCurrentsValues]);
+	});
 
 	function addNewInfoItem() {
 		setInfos([...infos, formTemplate]);
@@ -73,15 +122,15 @@ export const Analysis = () => {
 	return (
 		<div>
 			<Sidebar />
-			<div className="bg-[var(--gray-100)] text-center pt-[0vh] h-[100vh]">
-				<h1 className="pt-5 text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[var(--primary)] to-[var(--link-color)] drop-shadow-lg font-family-display mb-2">
+			<div className="bg-[var(--gray-100)] text-center pt-[0vh] h-[100vh] ">
+				<h1 className="pt-5 text-5xl text-[var(--text-default)] bg-clip-text drop-shadow-lg font-family-display mb-2">
 					Cadastro de Análises
 				</h1>
 				<p className="text-[var(--text-muted)] text-lg mb-6">
 					Gerencie suas amostras de solo facilmente
 				</p>
 				<div className="flex items-center justify-center bg-opacity-50">
-					<div className="lg:w-[80vw] w-[100vw] h-[75vh] overflow-y-auto scrollbar p-6 rounded-lg shadow-xl bg-[var(--gray-300)]">
+					<div className="lg:w-[80vw] w-[100vw] h-[75vh] overflow-y-auto scrollbar p-6 rounded-lg shadow-xl border-1 border-border bg-[var(--gray-300)]">
 						<div className="flex w-max mb-5 px-2 rounded-md gap-2 items-center bg-white-150 shadow-lg bg-surface text-[var(--text-default)]">
 							<button
 								type="button"
@@ -171,11 +220,11 @@ export const Analysis = () => {
 							</label>
 						</div>
 
-						<div className="flex flex-col gap-y-">
+						<div className="flex flex-col bg-[var(--gray-300)]">
 							{infos.map((_item, index) => {
 								return (
 									<div
-										key={index}
+										key={`${index}-${farm}`}
 										className="w-max bg-surface rounded-md shadow-lg pb-1 px-2 mt-3"
 									>
 										<div className="w-[70vw]">

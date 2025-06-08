@@ -1,6 +1,5 @@
 import { X } from "lucide-react";
 import { useState } from "react";
-import { ButtonPattern } from "../ButtonPattern/ButtonPattern";
 import type { DataLabelInfo } from "../TableAnalysis/TableAnalysis";
 import {
 	Table,
@@ -18,17 +17,16 @@ type Props = {
 };
 
 export const TableIputFarmer = ({ dataFarm, onToggle }: Props) => {
-	const [dataFarmInput, setDataFarm] = useState(dataFarm);
+	const [, setDataFarm] = useState(dataFarm);
 	return (
 		<Table>
-			<TableHeader>
-				{" "}
-				{/* Retirar esse table header e o jsx esta renderizando duas vezes */}
-				<TableCaption className="w-full flex justify-between items-center p-3 text-3xl text-[var(--text-default)]">
+			<TableCaption className="caption-top p-3 text-3xl text-[var(--text-default)]">
+				<div className="flex justify-between">
 					Tabela de dados da Fazenda
 					<X className="cursor-pointer" onClick={onToggle} />
-				</TableCaption>
-			</TableHeader>
+				</div>
+			</TableCaption>
+
 			<TableHeader>
 				<TableRow className="grid grid-cols-5">
 					<TableHead className="text-center text-[var(--text-default)]">
@@ -101,9 +99,6 @@ export const TableIputFarmer = ({ dataFarm, onToggle }: Props) => {
 						/>
 					</TableCell>
 				</TableRow>
-				<TableCell className="flex justify-self-center">
-					<ButtonPattern type={"button"} value={"Editar"} />
-				</TableCell>
 			</TableBody>
 		</Table>
 	);

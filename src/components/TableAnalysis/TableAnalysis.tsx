@@ -1,4 +1,9 @@
-import { CirclePlusIcon, PenIcon } from "lucide-react";
+import {
+	ChartColumnStackedIcon,
+	CirclePlusIcon,
+	FilePenLineIcon,
+	PenIcon,
+} from "lucide-react";
 import type { ChartDataItem } from "../Charts/Charts";
 import {
 	Table,
@@ -28,7 +33,14 @@ export type TableAllData = {
 };
 
 type TableAnalysisProps = TableAllData & {
-	onToggle: (e: React.MouseEvent<SVGSVGElement>) => void;
+	onTogglePenIcon?: (e: React.MouseEvent<SVGSVGElement>) => void;
+	classNamePenIcon?: string;
+	onToggleCirclePlusIcon?: (e: React.MouseEvent<SVGSVGElement>) => void;
+	classNameCirclePlusIcon?: string;
+	onToggleChartColumnStackedIcon?: (e: React.MouseEvent<SVGSVGElement>) => void;
+	classNameChartColumnStackedIcon?: string;
+	onToggleFilePenLineIcon?: (e: React.MouseEvent<SVGSVGElement>) => void;
+	classNameFilePenLineIcon?: string;
 };
 
 export const TableAnalysis = (tableData: TableAnalysisProps) => {
@@ -77,12 +89,23 @@ export const TableAnalysis = (tableData: TableAnalysisProps) => {
 							<TableCell className="flex gap-3 justify-center">
 								<PenIcon
 									data-id={i.labelInfo.id}
-									className="cursor-pointer"
-									onClick={tableData.onToggle}
+									className={`${tableData.classNamePenIcon} cursor-pointer`}
+									onClick={tableData.onTogglePenIcon}
+								/>
+								<ChartColumnStackedIcon
+									data-id={i.labelInfo.id}
+									className={`${tableData.classNameChartColumnStackedIcon} cursor-pointer`}
+									onClick={tableData.onToggleChartColumnStackedIcon}
 								/>
 								<CirclePlusIcon
-									className="cursor-pointer"
-									onClick={tableData.onToggle}
+									data-id={i.labelInfo.id}
+									className={`${tableData.classNameCirclePlusIcon} cursor-pointer`}
+									onClick={tableData.onToggleCirclePlusIcon}
+								/>
+								<FilePenLineIcon
+									data-id={i.labelInfo.id}
+									className={`${tableData.classNameFilePenLineIcon} cursor-pointer`}
+									onClick={tableData.onToggleFilePenLineIcon}
 								/>
 							</TableCell>
 						</TableRow>
