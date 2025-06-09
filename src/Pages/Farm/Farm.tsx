@@ -71,6 +71,7 @@ const dataTableFarm: TableAllData = {
 export const Farm = () => {
 	const [tableEye, setTableEye] = useState(true);
 	const [idIndex, setidIndex] = useState("");
+	const [dataTableFarmState, setDataTableFarm] = useState(dataTableFarm);
 	const navigate = useNavigate();
 
 	return (
@@ -78,12 +79,12 @@ export const Farm = () => {
 			<Sidebar />
 
 			<div className="fixed bg-[var(--gray-100)] w-full h-full">
-				<div className="fixed left-1/2 -translate-x-1/2 translate-y-[5vh]  ">
+				<div className="fixed left-1/2 -translate-x-1/2 translate-y-[5vh]">
 					<div className="lg:w-[60vw] w-[100vw] h-[80vh]">
 						<div className="rounded-lg shadow-xl border-1 border-border bg-[var(--gray-300)]">
 							<TableIputFarmer
 								dataFarm={
-									dataTableFarm.dataLabelsInfo.find(
+									dataTableFarmState.dataLabelsInfo.find(
 										(item) => item.labelInfo.id === idIndex,
 									)?.labelInfo
 								}
@@ -92,12 +93,9 @@ export const Farm = () => {
 								}}
 							/>
 						</div>
-						<div className="flex justify-between pe-14 pl-14">
+						<div className="flex justify-center">
 							<div>
 								<ButtonPattern type={"button"} value={"Salvar"} />
-							</div>
-							<div>
-								<ButtonPattern type={"button"} value={"Excluir"} />
 							</div>
 						</div>
 					</div>
@@ -109,15 +107,15 @@ export const Farm = () => {
 					tableEye ? "z-1 opacity-100" : "-z-1 opacity-0"
 				} duration-800`}
 			>
-				<div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[var(--gray-300)] overflow-y-auto rounded-lg border-1 border-border">
-					<div className="lg:w-[70vw] w-[100vw] h-[81vh] text-[var(--text-default)]">
+				<div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 overflow-y-auto ">
+					<div className="lg:w-[70vw] w-[100vw] h-[81vh] text-[var(--text-default)] bg-[var(--gray-300)] rounded-lg border-1 border-border">
 						<div>
 							<TableAnalysis
 								dataTableHeader={{
-									title: dataTableFarm.dataTableHeader.title,
-									headLabels: dataTableFarm.dataTableHeader.headLabels,
+									title: dataTableFarmState.dataTableHeader.title,
+									headLabels: dataTableFarmState.dataTableHeader.headLabels,
 								}}
-								dataLabelsInfo={dataTableFarm.dataLabelsInfo}
+								dataLabelsInfo={dataTableFarmState.dataLabelsInfo}
 								onTogglePenIcon={(e: React.MouseEvent<SVGSVGElement>): void => {
 									setTableEye((prev) => !prev);
 									setidIndex(e.currentTarget.getAttribute("data-id") ?? "");
@@ -131,8 +129,32 @@ export const Farm = () => {
 										},
 									});
 								}}
+								onToggleTrash2Icon={(
+									e: React.MouseEvent<SVGSVGElement>,
+								): void => {
+									const id = e.currentTarget.getAttribute("data-id") ?? "";
+
+									setDataTableFarm((prev) => ({
+										...prev,
+										dataLabelsInfo: prev.dataLabelsInfo.filter(
+											(item) => item.labelInfo.id !== id,
+										),
+									}));
+								}}
 								classNameCirclePlusIcon="hidden"
 								classNameChartColumnStackedIcon="hidden"
+							/>
+						</div>
+					</div>
+					<div className="flex justify-center">
+						<div>
+							<ButtonPattern
+								type={"button"}
+								value={"Nova"}
+								functionOnClick={() => {
+									setTableEye((prev) => !prev);
+									setidIndex("");
+								}}
 							/>
 						</div>
 					</div>

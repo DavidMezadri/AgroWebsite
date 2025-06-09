@@ -3,6 +3,7 @@ import {
 	CirclePlusIcon,
 	FilePenLineIcon,
 	PenIcon,
+	Trash2Icon,
 } from "lucide-react";
 import type { ChartDataItem } from "../Charts/Charts";
 import {
@@ -41,6 +42,8 @@ type TableAnalysisProps = TableAllData & {
 	classNameChartColumnStackedIcon?: string;
 	onToggleFilePenLineIcon?: (e: React.MouseEvent<SVGSVGElement>) => void;
 	classNameFilePenLineIcon?: string;
+	onToggleTrash2Icon?: (e: React.MouseEvent<SVGSVGElement>) => void;
+	classNameTrash2Icon?: string;
 };
 
 export const TableAnalysis = (tableData: TableAnalysisProps) => {
@@ -106,6 +109,11 @@ export const TableAnalysis = (tableData: TableAnalysisProps) => {
 									data-id={i.labelInfo.id}
 									className={`${tableData.classNameFilePenLineIcon} cursor-pointer`}
 									onClick={tableData.onToggleFilePenLineIcon}
+								/>
+								<Trash2Icon
+									data-id={i.labelInfo.id}
+									className={`${tableData.classNameFilePenLineIcon} cursor-pointer text-red-500`}
+									onClick={tableData.onToggleTrash2Icon}
 								/>
 							</TableCell>
 						</TableRow>
