@@ -1,6 +1,9 @@
 import { X } from "lucide-react";
-import { useState } from "react";
-import type { DataLabelInfo } from "../TableAnalysis/TableAnalysis";
+import type { data } from "react-router-dom";
+import type {
+	DataLabelInfo,
+	TableAllData,
+} from "../TableAnalysis/TableAnalysis";
 import {
 	Table,
 	TableBody,
@@ -14,10 +17,14 @@ import {
 type Props = {
 	dataFarm?: DataLabelInfo;
 	onToggle: () => void;
+	setDataTableFarm: React.Dispatch<React.SetStateAction<TableAllData>>;
 };
 
-export const TableIputFarmer = ({ dataFarm, onToggle }: Props) => {
-	const [, setDataFarm] = useState(dataFarm);
+export const TableIputFarmer = ({
+	dataFarm,
+	onToggle,
+	setDataTableFarm,
+}: Props) => {
 	return (
 		<Table>
 			<TableCaption className="caption-top p-3 text-3xl text-[var(--text-default)]">
@@ -51,7 +58,19 @@ export const TableIputFarmer = ({ dataFarm, onToggle }: Props) => {
 					<TableCell className="flex justify-self-center">
 						<input
 							onChange={(e) =>
-								setDataFarm((prev) => ({ ...prev, name: e.target.value }))
+								setDataTableFarm((prev) => ({
+									...prev,
+									dataLabelsInfo: prev.dataLabelsInfo.map((info) => ({
+										...info,
+										labelInfo: {
+											...info.labelInfo,
+											name:
+												info.labelInfo.id === dataFarm?.id
+													? e.target.value
+													: info.labelInfo.name,
+										},
+									})),
+								}))
 							}
 							value={dataFarm?.name.toString() ?? ""}
 							className="overflow-hidden text-sm border border-[var(--text-default)] placeholder:text-xs placeholder-[var(--text-default)] text-[var(--text-default)] px-3 py-2 rounded-md outline-green-600 max-w-40"
@@ -60,20 +79,44 @@ export const TableIputFarmer = ({ dataFarm, onToggle }: Props) => {
 					<TableCell className="flex justify-self-center">
 						<input
 							onChange={(e) =>
-								setDataFarm((prev) => ({ ...prev, farmer: e.target.value }))
+								setDataTableFarm((prev) => ({
+									...prev,
+									dataLabelsInfo: prev.dataLabelsInfo.map((info) => ({
+										...info,
+										labelInfo: {
+											...info.labelInfo,
+											farmer:
+												info.labelInfo.id === dataFarm?.id
+													? e.target.value
+													: info.labelInfo.farmer,
+										},
+									})),
+								}))
 							}
-							value={dataFarm?.farmer.toString() ?? ""}
+							value={dataFarm?.farmer.toString()}
 							className="text-sm border border-[var(--text-default)] placeholder:text-xs placeholder-[var(--text-default)] text-[var(--text-default)] px-3 py-2 rounded-md outline-green-600 min-w-30 max-w-30"
 						/>
 					</TableCell>
 					<TableCell className="flex justify-self-center">
 						<input
 							onChange={(e) =>
-								setDataFarm((prev) => ({ ...prev, date: e.target.value }))
+								setDataTableFarm((prev) => ({
+									...prev,
+									dataLabelsInfo: prev.dataLabelsInfo.map((info) => ({
+										...info,
+										labelInfo: {
+											...info.labelInfo,
+											date:
+												info.labelInfo.id === dataFarm?.id
+													? new Date(e.target.value)
+													: info.labelInfo.date,
+										},
+									})),
+								}))
 							}
 							value={
 								dataFarm?.date instanceof Date
-									? dataFarm.date.toISOString().split("T")[0]
+									? dataFarm.date.toLocaleDateString("en-CA").split("T")[0]
 									: ""
 							}
 							type="date"
@@ -83,7 +126,19 @@ export const TableIputFarmer = ({ dataFarm, onToggle }: Props) => {
 					<TableCell className="flex justify-self-center">
 						<input
 							onChange={(e) =>
-								setDataFarm((prev) => ({ ...prev, localize: e.target.value }))
+								setDataTableFarm((prev) => ({
+									...prev,
+									dataLabelsInfo: prev.dataLabelsInfo.map((info) => ({
+										...info,
+										labelInfo: {
+											...info.labelInfo,
+											localize:
+												info.labelInfo.id === dataFarm?.id
+													? e.target.value
+													: info.labelInfo.localize,
+										},
+									})),
+								}))
 							}
 							value={dataFarm?.localize.toString() ?? ""}
 							className="text-sm border border-[var(--text-default)] placeholder:text-xs placeholder-[var(--text-default)] text-[var(--text-default)] px-3 py-2 rounded-md outline-green-600 min-w-30 max-w-30"
@@ -92,7 +147,7 @@ export const TableIputFarmer = ({ dataFarm, onToggle }: Props) => {
 					<TableCell className="flex justify-self-center">
 						<input
 							onChange={(e) =>
-								setDataFarm((prev) => ({ ...prev, area: e.target.value }))
+								setDataTableFarm((prev) => ({ ...prev, area: e.target.value }))
 							}
 							value={dataFarm?.area.toString() ?? ""}
 							className="flex text-sm border border-[var(--text-default)] placeholder:text-xs placeholder-[var(--text-default)] text-[var(--text-default)] px-3 py-2 rounded-md outline-green-600 min-w-30 max-w-30"

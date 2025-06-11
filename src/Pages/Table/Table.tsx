@@ -100,6 +100,7 @@ const chartConfig = {
 export const Table = () => {
 	const [tableEye, setTableEye] = useState(true);
 	const [idIndex, setidIndex] = useState("0");
+	const [chartDataTable, setChartData] = useState(chartData);
 	const navigate = useNavigate();
 	const location = useLocation();
 	console.log("location", location); //ID da fazenda
@@ -115,7 +116,7 @@ export const Table = () => {
 								title={idIndex}
 								chartConfig={chartConfig}
 								chartData={
-									chartData.dataLabelsInfo.find(
+									chartDataTable.dataLabelsInfo.find(
 										(item) => item.labelInfo.id.toString() === idIndex,
 									)?.dataInfoAnalysis ?? []
 								}
@@ -135,25 +136,35 @@ export const Table = () => {
 						<div>
 							<TableAnalysis
 								dataTableHeader={{
-									title: chartData.dataTableHeader.title,
-									headLabels: chartData.dataTableHeader.headLabels,
+									title: chartDataTable.dataTableHeader.title,
+									headLabels: chartDataTable.dataTableHeader.headLabels,
 								}}
-								dataLabelsInfo={chartData.dataLabelsInfo}
+								dataLabelsInfo={chartDataTable.dataLabelsInfo}
 								onTogglePenIcon={(e: React.MouseEvent<SVGSVGElement>): void => {
 									const id = e.currentTarget.getAttribute("data-id") ?? "";
-									const data = chartData.dataLabelsInfo.find((item) => {
+									const data = chartDataTable.dataLabelsInfo.find((item) => {
 										return item.labelInfo.id === id;
 									});
 									navigate("analysis", { state: { data } });
 								}}
-								onToggleFilePenLineIcon={(
+								onToggleChartColumnStackedIcon={(
 									e: React.MouseEvent<SVGSVGElement>,
 								) => {
 									setTableEye((prev) => !prev);
 									setidIndex(e.currentTarget.getAttribute("data-id") ?? "");
 								}}
+								onToggleTrash2Icon={(e: React.MouseEvent<SVGSVGElement>) => {
+									const id = e.currentTarget.getAttribute("data-id") ?? "";
+
+									setChartData((prev) => ({
+										...prev,
+										dataLabelsInfo: prev.dataLabelsInfo.filter(
+											(item) => item.labelInfo.id !== id,
+										),
+									}));
+								}}
+								classNameFilePenLineIcon="hidden"
 								classNameCirclePlusIcon="hidden"
-								classNameChartColumnStackedIcon="hidden"
 							/>
 						</div>
 					</div>

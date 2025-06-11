@@ -112,7 +112,7 @@ export const TableAnalysis = (tableData: TableAnalysisProps) => {
 								/>
 								<Trash2Icon
 									data-id={i.labelInfo.id}
-									className={`${tableData.classNameFilePenLineIcon} cursor-pointer text-red-500`}
+									className={`${tableData.classNameTrash2Icon} cursor-pointer text-red-500`}
 									onClick={tableData.onToggleTrash2Icon}
 								/>
 							</TableCell>

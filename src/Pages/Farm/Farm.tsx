@@ -71,7 +71,7 @@ const dataTableFarm: TableAllData = {
 export const Farm = () => {
 	const [tableEye, setTableEye] = useState(true);
 	const [idIndex, setidIndex] = useState("");
-	const [dataTableFarmState, setDataTableFarm] = useState(dataTableFarm);
+	const [dataTableFarmState, setDataTableFarm] = useState(dataTableFarm); ///Descobri preciso passar ess use state para o inputs...
 	const navigate = useNavigate();
 
 	return (
@@ -83,6 +83,7 @@ export const Farm = () => {
 					<div className="lg:w-[60vw] w-[100vw] h-[80vh]">
 						<div className="rounded-lg shadow-xl border-1 border-border bg-[var(--gray-300)]">
 							<TableIputFarmer
+								setDataTableFarm={setDataTableFarm}
 								dataFarm={
 									dataTableFarmState.dataLabelsInfo.find(
 										(item) => item.labelInfo.id === idIndex,
