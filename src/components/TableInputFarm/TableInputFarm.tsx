@@ -108,17 +108,13 @@ export const TableIputFarmer = ({
 											...info.labelInfo,
 											date:
 												info.labelInfo.id === dataFarm?.id
-													? new Date(e.target.value)
+													? e.target.value
 													: info.labelInfo.date,
 										},
 									})),
 								}))
 							}
-							value={
-								dataFarm?.date instanceof Date
-									? dataFarm.date.toLocaleDateString("en-CA").split("T")[0]
-									: ""
-							}
+							value={dataFarm?.date.toString()}
 							type="date"
 							className="text-sm border border-[var(--text-default)] placeholder:text-xs placeholder-[var(--text-default)] text-[var(--text-default)] px-3 py-2 rounded-md outline-green-600 min-w-40 max-w-40"
 						/>
