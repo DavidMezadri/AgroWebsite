@@ -1,7 +1,7 @@
 import "./style.module.css";
 import "../../styles/theme.css";
 import { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import {
 	ButtonPattern,
 	type ChartDataItem,
@@ -61,6 +61,7 @@ type FormTemplate = {
 
 export const Analysis = () => {
 	const location = useLocation();
+	const navigate = useNavigate();
 
 	const formTemplate: FormTemplate = Object.fromEntries(
 		labels.map((label) => [label, ""]),
@@ -385,12 +386,18 @@ export const Analysis = () => {
 						</div>
 					</div>
 				</div>
-
-				<ButtonPattern
-					type={"button"}
-					value={"Salvar"}
-					functionOnClick={() => console.log(infos)}
-				/>
+				<div className="flex items-center justify-between mx-[10vw] gap-4">
+					<ButtonPattern
+						type={"button"}
+						value={"Salvar"}
+						functionOnClick={() => console.log(infos)}
+					/>
+					<ButtonPattern
+						type={"button"}
+						value={"Voltar"}
+						functionOnClick={() => navigate("/farm")}
+					/>
+				</div>
 			</div>
 		</div>
 	);

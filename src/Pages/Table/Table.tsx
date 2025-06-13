@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 import {
+	ButtonPattern,
 	Charts,
 	Sidebar,
 	type TableAllData,
@@ -131,8 +132,8 @@ export const Table = () => {
 					tableEye ? "z-1 opacity-100" : "-z-1 opacity-0"
 				} duration-800`}
 			>
-				<div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[var(--gray-300)] overflow-y-auto rounded-lg border-1 border-border">
-					<div className="lg:w-[70vw] w-[100vw] h-[81vh] text-[var(--text-default)]">
+				<div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 ">
+					<div className="lg:w-[70vw] w-[100vw] h-[81vh] text-[var(--text-default)] bg-[var(--gray-300)] overflow-y-auto rounded-lg border-1 border-border">
 						<div>
 							<TableAnalysis
 								dataTableHeader={{
@@ -165,6 +166,17 @@ export const Table = () => {
 								}}
 								classNameFilePenLineIcon="hidden"
 								classNameCirclePlusIcon="hidden"
+							/>
+						</div>
+					</div>
+					<div className="flex justify-center">
+						<div>
+							<ButtonPattern
+								type={"button"}
+								value={"Nova"}
+								functionOnClick={() => {
+									navigate("analysis");
+								}}
 							/>
 						</div>
 					</div>
