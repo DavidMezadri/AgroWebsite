@@ -23,7 +23,6 @@ const chartData: TableAllData = {
 				{ element: "pH", current: "450", missing: "300" },
 				{ element: "MO", current: "520", missing: "120" },
 				{ element: "CO", current: "380", missing: "420" },
-				{ element: "CO", current: "140", missing: "550" },
 				{ element: "P", current: "600", missing: "350" },
 				{ element: "K", current: "480", missing: "400" },
 				{ element: "Ca", current: "480", missing: "500" },

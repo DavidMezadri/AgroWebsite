@@ -1,54 +1,49 @@
-# React + TypeScript + Vite
+# Projeto React com Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este é um projeto front-end desenvolvido com **React** utilizando o **Vite** como bundler.
 
-Currently, two official plugins are available:
+## Tecnologias Utilizadas
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [React](https://reactjs.org/)
+- [Vite](https://vitejs.dev/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
 
-## Expanding the ESLint configuration
+## Scripts Disponíveis
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+No diretório do projeto, você pode rodar:
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+### `npm install`
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Instala as dependências do projeto.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### `npm run dev`
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+Inicia o servidor de desenvolvimento.
+
+### `npm run build`
+
+## Estrutura de Pastas
+
+public/ # Arquivos públicos (svg)
+src/
+├── assets/ # Imagens e arquivos estáticos
+├── lib/ # Funções utilitárias e bibliotecas auxiliares
+├── components/ # Componentes reutilizáveis
+├── pages/ # Páginas da aplicação
+├── App.jsx # Componente principal da aplicação
+└── main.jsx # Ponto de entrada da aplicação React
+
+
+1. Clone o repositório:
+   ```bash
+   git clone https://github.com/DavidMezadri/AgroWebsite
+   cd AgroWebsite
+
+2. Instale as dependências:
+ npm i
+
+3. Inicie o servidor de desenvolvimento:
+npm run dev
+   
+   

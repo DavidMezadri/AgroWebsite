@@ -107,6 +107,7 @@ export const Farm = () => {
 				className={`fixed h-full w-full bg-[var(--gray-100)] ${
 					tableEye ? "z-1 opacity-100" : "-z-1 opacity-0"
 				} duration-800`}
+				/* tooltip */
 			>
 				<div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 overflow-y-auto ">
 					<div className="lg:w-[70vw] w-[100vw] h-[81vh] text-[var(--text-default)] bg-[var(--gray-300)] rounded-lg border-1 border-border">
