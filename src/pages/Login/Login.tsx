@@ -68,7 +68,10 @@ export const Login = () => {
 		}
 
 		// prosseguir com envio
-		console.log("Email válido:", email);
+		if (window.confirm("Deseja realmente ir para a página Farms?")) {
+			// Navegar para /farms
+			navigate("/farm");
+		}
 	};
 
 	return (

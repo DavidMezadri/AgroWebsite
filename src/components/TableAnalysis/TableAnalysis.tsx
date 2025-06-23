@@ -94,27 +94,44 @@ export const TableAnalysis = (tableData: TableAnalysisProps) => {
 									data-id={i.labelInfo.id}
 									className={`${tableData.classNamePenIcon} cursor-pointer`}
 									onClick={tableData.onTogglePenIcon}
-								/>
+								>
+									<title>Editar</title>{" "}
+								</PenIcon>
+
 								<ChartColumnStackedIcon
 									data-id={i.labelInfo.id}
 									className={`${tableData.classNameChartColumnStackedIcon} cursor-pointer`}
 									onClick={tableData.onToggleChartColumnStackedIcon}
-								/>
+								>
+									<title>Gráficos</title>{" "}
+								</ChartColumnStackedIcon>
+
 								<CirclePlusIcon
 									data-id={i.labelInfo.id}
 									className={`${tableData.classNameCirclePlusIcon} cursor-pointer`}
 									onClick={tableData.onToggleCirclePlusIcon}
-								/>
+								>
+									{" "}
+									<title>Editar</title>{" "}
+								</CirclePlusIcon>
+
 								<FilePenLineIcon
 									data-id={i.labelInfo.id}
 									className={`${tableData.classNameFilePenLineIcon} cursor-pointer`}
 									onClick={tableData.onToggleFilePenLineIcon}
-								/>
+								>
+									{" "}
+									<title>Análises</title>{" "}
+								</FilePenLineIcon>
+
 								<Trash2Icon
 									data-id={i.labelInfo.id}
 									className={`${tableData.classNameTrash2Icon} cursor-pointer text-red-500`}
 									onClick={tableData.onToggleTrash2Icon}
-								/>
+								>
+									{" "}
+									<title>Excluir</title>{" "}
+								</Trash2Icon>
 							</TableCell>
 						</TableRow>
 					);
