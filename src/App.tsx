@@ -5,7 +5,7 @@ export const App = () => {
 	return (
 		<Router>
 			<Routes>
-				<Route path="/login" element={<Login />} />
+				<Route path="/" element={<Login />} />
 				<Route path="/register" element={<Register />} />
 				<Route path="/table/analysis" element={<Analysis />} />
 				<Route path="/table" element={<Table />} />

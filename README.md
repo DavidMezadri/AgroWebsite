@@ -37,13 +37,15 @@ src/
 
 1. Clone o repositório:
    ```bash
-   git clone https://github.com/DavidMezadri/AgroWebsite
+   git clone https://github.com/DavidMezadri/AgroWebsite.git
    cd AgroWebsite
 
 2. Instale as dependências:
- npm i
+  ```bash
+  npm i
 
 3. Inicie o servidor de desenvolvimento:
-npm run dev
+  ```bash
+  npm run dev
    
    

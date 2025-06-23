@@ -1,7 +1,7 @@
 import "./style.module.css";
 import "../../styles/theme.css";
 import { EyeIcon, EyeOffIcon } from "lucide-react";
-import { useState } from "react";
+import { type SetStateAction, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ThemeButton } from "../../components";
 
@@ -12,6 +12,10 @@ export const Login = () => {
 	const [icon, SetIcon] = useState<IconType>("hidden");
 	const [showPassword, setShowPassword] = useState(false);
 	const togglePassword = () => setShowPassword((prev) => !prev);
+	const [email, setEmail] = useState("");
+	const [erroEmail, setErroEmail] = useState("");
+	const [password, setPassword] = useState("");
+	const [erroPassword, setErroPassword] = useState("");
 
 	const switchIcons = {
 		hidden: (
@@ -34,6 +38,37 @@ export const Login = () => {
 				}}
 			/>
 		),
+	};
+
+	const handleChangeEmail = (e: {
+		target: { value: SetStateAction<string> };
+	}) => {
+		setEmail(e.target.value);
+		setErroEmail("");
+	};
+
+	const handleChangePassword = (e: {
+		target: { value: SetStateAction<string> };
+	}) => {
+		setPassword(e.target.value);
+		setErroPassword("");
+	};
+
+	const handleSubmit = (e: { preventDefault: () => void }) => {
+		e.preventDefault();
+		if (!email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
+			setErroEmail("E-mail inválido");
+			console.log(!email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/));
+			return;
+		}
+		if (password.length <= 6) {
+			setErroPassword("Senha deve ter pelo menos 6 caracteres");
+			console.log("Senha invál");
+			return;
+		}
+
+		// prosseguir com envio
+		console.log("Email válido:", email);
 	};
 
 	return (
@@ -69,9 +104,11 @@ export const Login = () => {
 											id="username"
 											name="username"
 											type="text"
+											value={email}
+											onChange={handleChangeEmail}
 											required
 											className="w-full text-[var(--text-default)] text-sm border border-[var(--text-default)] px-4 py-3 rounded-md outline-[var(--link-color)]"
-											placeholder="Digite o Usuário"
+											placeholder="Digite o E-mail"
 										/>
 
 										<svg
@@ -88,6 +125,9 @@ export const Login = () => {
 											/>
 										</svg>
 									</div>
+									{erroEmail && (
+										<span style={{ color: "red" }}>{erroEmail}</span>
+									)}
 								</div>
 
 								<div>
@@ -101,6 +141,8 @@ export const Login = () => {
 										<input
 											id="password"
 											name="password"
+											value={password}
+											onChange={handleChangePassword}
 											type={showPassword ? "text" : "password"}
 											required
 											className="w-full text-[var(--text-default)] text-sm border border-[var(--text-default)] px-4 py-3 rounded-md outline-[var(--link-color)]"
@@ -108,6 +150,9 @@ export const Login = () => {
 										/>
 										{switchIcons[icon]}
 									</div>
+									{erroPassword && (
+										<span style={{ color: "red" }}>{erroPassword}</span>
+									)}
 								</div>
 
 								<div className="flex flex-wrap items-center justify-between gap-4">
@@ -138,6 +183,7 @@ export const Login = () => {
 								<div className="!mt-12">
 									<button
 										type="button"
+										onClick={handleSubmit}
 										className="w-full py-2 px-4 text-[15px] font-medium tracking-wide rounded-md text-[var(--text-default)] bg-[var(--link-color)] hover:bg-[var(--link-hover)] focus:outline-none cursor-pointer"
 									>
 										Logar
