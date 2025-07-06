@@ -1,5 +1,4 @@
 import { X } from "lucide-react";
-import type { data } from "react-router-dom";
 import type {
 	DataLabelInfo,
 	TableAllData,

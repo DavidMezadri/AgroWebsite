@@ -1,9 +1,11 @@
 import type React from "react";
+import type { FormTemplate } from "../../pages/Analysis/Analysis";
 
 type InputElementsProps = {
 	placeholder: string;
 	type?: string;
-	infos: string[{}];
+	infos: FormTemplate[];
+
 	index: number;
 	width?: string;
 	function: (index: number, field: string, valor: string) => void;
@@ -26,7 +28,7 @@ export const InputElements: React.FC<InputElementsProps> = ({
 				required
 				type={type}
 				onChange={(e) => handleClickUpdate(index, field, e.target.value)}
-				value={infos[index][field]}
+				value={infos[index][field as keyof FormTemplate]}
 			/>
 		</div>
 	);

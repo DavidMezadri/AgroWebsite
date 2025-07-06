@@ -1,8 +1,9 @@
 import "./styles.module.css";
-import { X, XIcon } from "lucide-react";
+import { XIcon } from "lucide-react";
 import { type SetStateAction, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ThemeButton } from "../../components";
+import { api } from "../../services/api";
 
 export const Register = () => {
 	const navigate = useNavigate();
@@ -14,6 +15,7 @@ export const Register = () => {
 	const [passwordConfirmation, setPasswordConfirmation] = useState("");
 	const [checkbox, setCheckbox] = useState(false);
 	const [erroCheckbox, setErroCheckbox] = useState("");
+	const is_admin = true;
 
 	const handleChangeEmail = (e: {
 		target: { value: SetStateAction<string> };
@@ -36,6 +38,19 @@ export const Register = () => {
 		setErroPassword("");
 	};
 
+	const handlerSaveUser = async (e: any) => {
+		e.preventDefault();
+		const data = {
+			Email: email,
+			Password: password,
+			Is_admin: is_admin,
+		};
+		console.log(data);
+
+		const response = await api.post("/api/v1/users", data);
+		console.log(response);
+	};
+
 	const handleSubmit = (e: { preventDefault: () => void }) => {
 		e.preventDefault();
 		if (!email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
@@ -54,9 +69,10 @@ export const Register = () => {
 			setErroCheckbox("Você deve aceitar os termos e condições");
 			return;
 		}
+		console.log("oi");
 
 		// prosseguir com envio
-		console.log("Email válido:", email);
+		handlerSaveUser(e);
 	};
 
 	return (

@@ -4,6 +4,7 @@ import { EyeIcon, EyeOffIcon } from "lucide-react";
 import { type SetStateAction, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ThemeButton } from "../../components";
+import { api } from "../../services/api";
 
 type IconType = "hidden" | "show";
 
@@ -54,6 +55,17 @@ export const Login = () => {
 		setErroPassword("");
 	};
 
+	const handlerEnterUser = async (e: any) => {
+		e.preventDefault();
+		const data = {
+			Email: email,
+			Password: password,
+		};
+
+		const response = await api.post("/api/v1/auth", data);
+		console.log(response);
+	};
+
 	const handleSubmit = (e: { preventDefault: () => void }) => {
 		e.preventDefault();
 		if (!email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
@@ -68,10 +80,7 @@ export const Login = () => {
 		}
 
 		// prosseguir com envio
-		if (window.confirm("Deseja realmente ir para a página Farms?")) {
-			// Navegar para /farms
-			navigate("/farm");
-		}
+		handlerEnterUser(e);
 	};
 
 	return (

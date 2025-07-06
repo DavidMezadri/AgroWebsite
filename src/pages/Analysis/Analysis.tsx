@@ -36,7 +36,7 @@ const labels = [
 	"H+Al",
 ];
 
-type FormTemplate = {
+export type FormTemplate = {
 	ID: "";
 	Nome: "";
 	Data: "";
