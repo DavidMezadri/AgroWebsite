@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
 	ButtonPattern,
@@ -7,6 +7,7 @@ import {
 	TableAnalysis,
 	TableIputFarmer,
 } from "../../components";
+import { api } from "../../services/api";
 
 const dataTableFarm: TableAllData = {
 	dataTableHeader: {
@@ -32,52 +33,114 @@ const dataTableFarm: TableAllData = {
 			},
 			dataInfoAnalysis: [{ element: "pH", current: "450", missing: "300" }],
 		},
-		{
-			labelInfo: {
-				id: "2",
-				name: "Amostra 1",
-				farmer: "João",
-				date: "2008-02-01",
-				area: "2",
-				localize: "Chapecó",
-			},
-			dataInfoAnalysis: [{ element: "pH", current: "450", missing: "300" }],
-		},
-		{
-			labelInfo: {
-				id: "3",
-				name: "Amostra 1",
-				farmer: "Joãozinho",
-				date: "2008-02-01",
-				area: "3",
-				localize: "Chapecó",
-			},
-			dataInfoAnalysis: [{ element: "pH", current: "450", missing: "300" }],
-		},
-		{
-			labelInfo: {
-				id: "8",
-				name: "Amostra 1",
-				farmer: "Joãozinho",
-				date: "2008-02-01",
-				area: "8",
-				localize: "Chapecó",
-			},
-			dataInfoAnalysis: [{ element: "pH", current: "450", missing: "300" }],
-		},
 	],
 };
 
 export const Farm = () => {
 	const [tableEye, setTableEye] = useState(true);
-	const [idIndex, setidIndex] = useState("");
+	const [idIndex, setidIndexFarm] = useState("");
 	const [dataTableFarmState, setDataTableFarm] = useState(dataTableFarm); ///Descobri preciso passar ess use state para o inputs...
 	const navigate = useNavigate();
 
+	useEffect(() => {
+		const fetchFarms = async () => {
+			const token = localStorage.getItem("token");
+
+			if (!token) {
+				console.error("Token não encontrado");
+				return;
+			}
+
+			try {
+				const response = await api.get("/api/v1/farms", {
+					headers: {
+						Authorization: `Bearer ${token}`,
+					},
+				});
+				setDataTableFarm(response.data);
+			} catch (err) {
+				console.error("Erro ao buscar fazendas:");
+			}
+		};
+
+		fetchFarms();
+	}, []);
+
+	const putDataFarm = async (id: string) => {
+		const editedFarm = dataTableFarmState.dataLabelsInfo.find(
+			(item) => item.labelInfo.id === id,
+		)?.labelInfo;
+
+		const token = localStorage.getItem("token");
+
+		if (!token) {
+			console.error("Token não encontrado");
+			return;
+		}
+		try {
+			const response = await api.put("/api/v1/farms", editedFarm, {
+				headers: {
+					Authorization: `Bearer ${token}`,
+				},
+			});
+			alert(response.data);
+		} catch (err) {
+			console.error("Erro ao editar fazendas");
+		}
+
+		setTableEye(true);
+	};
+
+	const postDataFarm = async () => {
+		const editedFarm = dataTableFarmState.dataLabelsInfo.find(
+			(item) => item.labelInfo.id === "0",
+		)?.labelInfo;
+		const token = localStorage.getItem("token");
+
+		if (!token) {
+			console.error("Token não encontrado");
+			return;
+		}
+		try {
+			const response = await api.post("/api/v1/farms", editedFarm, {
+				headers: {
+					Authorization: `Bearer ${token}`,
+				},
+			});
+			alert(response.data);
+		} catch (err) {
+			console.error("Erro ao cadastrar fazendas");
+		}
+		window.location.reload();
+	};
+
+	const deleteDataFarm = async (id: string) => {
+		const token = localStorage.getItem("token");
+		if (!token) {
+			console.error("Token não encontrado");
+			return;
+		}
+		const confirmDelete = window.confirm(
+			"Deseja realmente excluir esta fazenda?",
+		);
+		if (!confirmDelete) return;
+		try {
+			const response = await api.delete("/api/v1/farms", {
+				headers: {
+					Authorization: `Bearer ${token}`,
+					id: id,
+				},
+			});
+			alert(response.data);
+			setTableEye(true);
+		} catch (err) {
+			console.error("Erro ao deletar fazendas");
+		}
+		window.location.reload();
+	};
 	return (
 		<div>
 			<Sidebar />
-
 			<div className="fixed bg-[var(--gray-100)] w-full h-full">
 				<div className="fixed left-1/2 -translate-x-1/2 translate-y-[5vh]">
 					<div className="lg:w-[60vw] w-[100vw] h-[80vh]">
@@ -96,7 +159,13 @@ export const Farm = () => {
 						</div>
 						<div className="flex justify-center">
 							<div>
-								<ButtonPattern type={"button"} value={"Salvar"} />
+								<ButtonPattern
+									functionOnClick={() =>
+										idIndex !== "0" ? putDataFarm(idIndex) : postDataFarm()
+									}
+									type={"button"}
+									value={"Salvar"}
+								/>
 							</div>
 						</div>
 					</div>
@@ -106,7 +175,7 @@ export const Farm = () => {
 			<div
 				className={`fixed h-full w-full bg-[var(--gray-100)] ${
 					tableEye ? "z-1 opacity-100" : "-z-1 opacity-0"
-				} duration-800`}
+				} duration-1000`}
 				/* tooltip */
 			>
 				<div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 overflow-y-auto ">
@@ -120,7 +189,7 @@ export const Farm = () => {
 								dataLabelsInfo={dataTableFarmState.dataLabelsInfo}
 								onTogglePenIcon={(e: React.MouseEvent<SVGSVGElement>): void => {
 									setTableEye((prev) => !prev);
-									setidIndex(e.currentTarget.getAttribute("data-id") ?? "");
+									setidIndexFarm(e.currentTarget.getAttribute("data-id") ?? "");
 								}}
 								onToggleFilePenLineIcon={(
 									e: React.MouseEvent<SVGSVGElement>,
@@ -136,12 +205,7 @@ export const Farm = () => {
 								): void => {
 									const id = e.currentTarget.getAttribute("data-id") ?? "";
 
-									setDataTableFarm((prev) => ({
-										...prev,
-										dataLabelsInfo: prev.dataLabelsInfo.filter(
-											(item) => item.labelInfo.id !== id,
-										),
-									}));
+									deleteDataFarm(id);
 								}}
 								classNameCirclePlusIcon="hidden"
 								classNameChartColumnStackedIcon="hidden"
@@ -155,7 +219,32 @@ export const Farm = () => {
 								value={"Nova"}
 								functionOnClick={() => {
 									setTableEye((prev) => !prev);
-									setidIndex("");
+									if (
+										dataTableFarmState.dataLabelsInfo.find(
+											(item) => item.labelInfo.id === "0",
+										)?.labelInfo.id === "0"
+									) {
+										setidIndexFarm("0");
+									} else {
+										setDataTableFarm({
+											...dataTableFarmState,
+											dataLabelsInfo: [
+												...dataTableFarmState.dataLabelsInfo,
+												{
+													labelInfo: {
+														id: "0",
+														name: "",
+														farmer: "",
+														date: "",
+														area: "",
+														localize: "",
+													},
+													dataInfoAnalysis: [],
+												},
+											],
+										});
+										setidIndexFarm("0");
+									}
 								}}
 							/>
 						</div>

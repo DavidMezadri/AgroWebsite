@@ -92,7 +92,7 @@ export const TableIputFarmer = ({
 									})),
 								}))
 							}
-							value={dataFarm?.farmer.toString()}
+							value={dataFarm?.farmer.toString() ?? ""}
 							className="text-sm border border-[var(--text-default)] placeholder:text-xs placeholder-[var(--text-default)] text-[var(--text-default)] px-3 py-2 rounded-md outline-green-600 min-w-30 max-w-30"
 						/>
 					</TableCell>
@@ -142,7 +142,19 @@ export const TableIputFarmer = ({
 					<TableCell className="flex justify-self-center">
 						<input
 							onChange={(e) =>
-								setDataTableFarm((prev) => ({ ...prev, area: e.target.value }))
+								setDataTableFarm((prev) => ({
+									...prev,
+									dataLabelsInfo: prev.dataLabelsInfo.map((info) => ({
+										...info,
+										labelInfo: {
+											...info.labelInfo,
+											area:
+												info.labelInfo.id === dataFarm?.id
+													? e.target.value
+													: info.labelInfo.area,
+										},
+									})),
+								}))
 							}
 							value={dataFarm?.area.toString() ?? ""}
 							className="flex text-sm border border-[var(--text-default)] placeholder:text-xs placeholder-[var(--text-default)] text-[var(--text-default)] px-3 py-2 rounded-md outline-green-600 min-w-30 max-w-30"

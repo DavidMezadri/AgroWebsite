@@ -64,6 +64,13 @@ export const Login = () => {
 
 		const response = await api.post("/api/v1/auth", data);
 		console.log(response);
+		if (response.status === 200) {
+			const token = response.data.tokenString;
+			localStorage.setItem("token", token);
+			navigate("/farm");
+		} else {
+			setErroEmail("E-mail ou senha inválidos");
+		}
 	};
 
 	const handleSubmit = (e: { preventDefault: () => void }) => {
@@ -75,7 +82,7 @@ export const Login = () => {
 		}
 		if (password.length <= 6) {
 			setErroPassword("Senha deve ter pelo menos 6 caracteres");
-			console.log("Senha invál");
+			console.log("Senha inválida!");
 			return;
 		}
 
