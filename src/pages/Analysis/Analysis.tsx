@@ -8,6 +8,7 @@ import {
 	InputElements,
 	Sidebar,
 } from "../../components/index";
+import { api } from "../../services/api";
 
 const labelClassNormal = "text-center font-semibold min-w-20 max-w-20";
 
@@ -62,7 +63,6 @@ export type FormTemplate = {
 export const Analysis = () => {
 	const location = useLocation();
 	const navigate = useNavigate();
-
 	const formTemplate: FormTemplate = Object.fromEntries(
 		labels.map((label) => [label, ""]),
 	) as FormTemplate;
@@ -88,6 +88,27 @@ export const Analysis = () => {
 
 		setInfos([labelsAndCurrentsValues]);
 	});
+
+	const putDataAnalysis = async (id: string) => {
+		const token = localStorage.getItem("token");
+
+		if (!token) {
+			console.error("Token não encontrado");
+			return;
+		}
+		try {
+			const response = await api.put("/api/v1/analysis", infos, {
+				headers: {
+					Authorization: `Bearer ${token}`,
+				},
+			});
+
+			console.log("infos", response);
+		} catch (err) {
+			alert(err);
+			console.error("Erro ao editar fazendas");
+		}
+	};
 
 	function addNewInfoItem() {
 		setInfos([...infos, formTemplate]);
@@ -391,12 +412,16 @@ export const Analysis = () => {
 					<ButtonPattern
 						type={"button"}
 						value={"Salvar"}
-						functionOnClick={() => console.log(infos)}
+						functionOnClick={() => {
+							putDataAnalysis(location.state?.data.labelInfo.id ?? "");
+						}}
 					/>
 					<ButtonPattern
 						type={"button"}
 						value={"Voltar"}
-						functionOnClick={() => navigate("/farm")}
+						functionOnClick={() => {
+							navigate("/farm");
+						}}
 					/>
 				</div>
 			</div>
