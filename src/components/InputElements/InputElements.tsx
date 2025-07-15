@@ -5,9 +5,9 @@ type InputElementsProps = {
 	placeholder: string;
 	type?: string;
 	infos: FormTemplate[];
-
 	index: number;
 	width?: string;
+	disabled?: boolean;
 	function: (index: number, field: string, valor: string) => void;
 };
 
@@ -17,12 +17,14 @@ export const InputElements: React.FC<InputElementsProps> = ({
 	infos,
 	index,
 	width = 20,
+	disabled = false,
 	function: handleClickUpdate,
 }) => {
 	const field = placeholder.trim();
 	return (
 		<div>
 			<input
+				disabled={disabled}
 				className={`flex-1 text-sm border border-[var(--gray-600)] placeholder:text-xs placeholder-[var(--text-default)] text-[var(--text-default)] px-3 py-2 rounded-md outline-green-600 min-w-${width} max-w-${width}`}
 				placeholder={placeholder}
 				required

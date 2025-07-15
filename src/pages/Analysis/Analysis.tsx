@@ -78,7 +78,7 @@ export const Analysis = () => {
 		const labelInfo = [
 			location.state?.data.labelInfo.id,
 			location.state?.data.labelInfo.name,
-			location.state?.data.labelInfo.date.toISOString().split("T")[0],
+			location.state?.data.labelInfo.date,
 			...valueCurrents,
 		];
 
@@ -259,6 +259,7 @@ export const Analysis = () => {
 												placeholder={labels[0]}
 												infos={infos}
 												index={index}
+												disabled={true}
 												function={updateInfosItem}
 											/>
 											<InputElements

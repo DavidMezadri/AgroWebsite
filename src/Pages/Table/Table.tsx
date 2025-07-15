@@ -1,6 +1,6 @@
 import "./styles.module.css";
 import "../../styles/theme.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 import {
@@ -10,6 +10,7 @@ import {
 	type TableAllData,
 	TableAnalysis,
 } from "../../components/index";
+import { api } from "../../services/api";
 
 const chartData: TableAllData = {
 	dataTableHeader: {
@@ -39,50 +40,6 @@ const chartData: TableAllData = {
 				{ element: "H+Al", current: "600", missing: "350" },
 			],
 		},
-		{
-			labelInfo: { id: "2", name: "Amostra 2", date: new Date("2022-05-15") },
-			dataInfoAnalysis: [
-				{ element: "pH", current: "500", missing: "250" },
-				{ element: "MO", current: "450", missing: "150" },
-				{ element: "CO", current: "300", missing: "400" },
-				{ element: "P", current: "650", missing: "300" },
-				{ element: "K", current: "470", missing: "390" },
-				{ element: "Ca", current: "490", missing: "510" },
-				{ element: "Mg", current: "460", missing: "520" },
-				{ element: "S", current: "160", missing: "540" },
-				{ element: "B", current: "620", missing: "340" },
-				{ element: "Zn", current: "490", missing: "410" },
-				{ element: "Cu", current: "470", missing: "490" },
-				{ element: "Mn", current: "460", missing: "510" },
-				{ element: "Fe", current: "470", missing: "420" },
-				{ element: "Al", current: "460", missing: "520" },
-				{ element: "CTC", current: "490", missing: "510" },
-				{ element: "V%", current: "150", missing: "560" },
-				{ element: "H+Al", current: "610", missing: "340" },
-			],
-		},
-		{
-			labelInfo: { id: "3", name: "Amostra 3", date: new Date("2023-11-10") },
-			dataInfoAnalysis: [
-				{ element: "pH", current: "430", missing: "320" },
-				{ element: "MO", current: "510", missing: "130" },
-				{ element: "CO", current: "310", missing: "430" },
-				{ element: "P", current: "610", missing: "360" },
-				{ element: "K", current: "460", missing: "410" },
-				{ element: "Ca", current: "470", missing: "520" },
-				{ element: "Mg", current: "450", missing: "530" },
-				{ element: "S", current: "170", missing: "530" },
-				{ element: "B", current: "630", missing: "330" },
-				{ element: "Zn", current: "470", missing: "420" },
-				{ element: "Cu", current: "460", missing: "510" },
-				{ element: "Mn", current: "470", missing: "520" },
-				{ element: "Fe", current: "460", missing: "430" },
-				{ element: "Al", current: "470", missing: "510" },
-				{ element: "CTC", current: "460", missing: "520" },
-				{ element: "V%", current: "160", missing: "570" },
-				{ element: "H+Al", current: "620", missing: "330" },
-			],
-		},
 	],
 };
 
@@ -104,6 +61,35 @@ export const Table = () => {
 	const navigate = useNavigate();
 	const location = useLocation();
 	console.log("location", location); //ID da fazenda
+
+	useEffect(() => {
+		const fetchFarms = async () => {
+			const token = localStorage.getItem("token");
+			const idFarm = localStorage.getItem("farm"); // Obtém o ID da fazenda do estado da navegação
+
+			if (!token) {
+				console.error("Token não encontrado");
+				return;
+			}
+
+			try {
+				const response = await api.get("/api/v1/analysis", {
+					headers: {
+						Authorization: `Bearer ${token}`,
+					},
+					params: {
+						idFarm,
+					},
+				});
+				console.log("response.data", response.data);
+				setChartData(response.data);
+			} catch (err) {
+				console.error("Erro ao buscar fazendas:");
+			}
+		};
+
+		fetchFarms();
+	}, []);
 
 	return (
 		<div>
@@ -142,9 +128,11 @@ export const Table = () => {
 								dataLabelsInfo={chartDataTable.dataLabelsInfo}
 								onTogglePenIcon={(e: React.MouseEvent<SVGSVGElement>): void => {
 									const id = e.currentTarget.getAttribute("data-id") ?? "";
+									console.log("data", id);
 									const data = chartDataTable.dataLabelsInfo.find((item) => {
 										return item.labelInfo.id === id;
 									});
+									console.log("data", data);
 									navigate("analysis", { state: { data } });
 								}}
 								onToggleChartColumnStackedIcon={(

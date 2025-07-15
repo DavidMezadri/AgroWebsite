@@ -194,11 +194,9 @@ export const Farm = () => {
 								onToggleFilePenLineIcon={(
 									e: React.MouseEvent<SVGSVGElement>,
 								): void => {
-									navigate("/table", {
-										state: {
-											id: e.currentTarget.getAttribute("data-id") ?? "",
-										},
-									});
+									const farm = e.currentTarget.getAttribute("data-id") ?? "";
+									localStorage.setItem("farm", farm);
+									navigate("/table");
 								}}
 								onToggleTrash2Icon={(
 									e: React.MouseEvent<SVGSVGElement>,

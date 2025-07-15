@@ -55,7 +55,7 @@ export const Login = () => {
 		setErroPassword("");
 	};
 
-	const handlerEnterUser = async (e: any) => {
+	const handlerEnterUser = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		const data = {
 			Email: email,
@@ -73,7 +73,7 @@ export const Login = () => {
 		}
 	};
 
-	const handleSubmit = (e: { preventDefault: () => void }) => {
+	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		if (!email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
 			setErroEmail("E-mail inválido");
